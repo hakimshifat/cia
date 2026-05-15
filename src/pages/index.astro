@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="CIA">
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-scanline"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(95vw,860px);height:auto;pointer-events:none;z-index:1;opacity:0;animation:watermarkFade 3.5s ease 0.5s forwards;">
+    <img src="/assets/images/other/cia-logo-transparent.png" alt="" aria-hidden="true" style="width:100%;height:auto;display:block;filter:drop-shadow(0 0 40px rgba(255,255,255,.25)) drop-shadow(0 0 80px rgba(255,255,255,.15)) drop-shadow(0 0 120px rgba(255,255,255,.08));user-select:none;"/>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span>Founded 2025 · BUP, Bangladesh</div>
+    <h1 class="hero-name">Cyber Invasion<br/>Army</h1>
+    <p class="hero-sub">
+      Forged in <span>BUP</span>, powered by passion, sharpened by every exploit.
+      We learn by breaking — we defend by understanding.<span class="blink-cursor"></span>
+    </p>
+    <div class="hero-ctas">
+      <a href="experience.html" class="cta-primary">View CTF History</a>
+      <a href="members.html" class="cta-secondary">Meet the Team</a>
+    </div>
+    <div class="stats-card-wrap">
+      <div class="stats-card" id="stats-card">
+        <div class="stat-item">
+          <div class="stat-num" id="stat-pts">349</div>
+          <div class="stat-label" id="stat-pts-label">2026 Pts</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="stat-global">#49</div>
+          <div class="stat-label" id="stat-global-label">Global 2026</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="stat-bd">#3</div>
+          <div class="stat-label">BD Rank</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="stat-ctfs">70+</div>
+          <div class="stat-label">CTFs Played</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="stat-members">12</div>
+          <div class="stat-label">Members</div>
+        </div>
+      </div>
+      <div id="stats-live-badge">
+        <span class="live-dot"></span>
+        <span class="live-text">LIVE · CTFtime</span>
+        <span id="stats-updated"></span>
+      </div>
+    </div>
+  </div>
+</section>
+</Layout>

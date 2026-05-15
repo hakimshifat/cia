@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Cyber Invasion Army — CIA | CTF Team Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+
+<!-- ── Scroll Progress ── -->
+<div id="scroll-progress"></div>
+
+<!-- ── Custom Cursor ── -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ── Noise ── -->
+<div id="noise"></div>
+
+<!-- ── Particle BG ── -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- ── Loading Screen ── -->
+<div id="loading">
+  <script>if(sessionStorage.getItem('cia_visited')){document.getElementById('loading').style.display='none';}</script>
+  <div class="loading-initials">CIA</div>
+  <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
+  <div class="loading-label">Initializing Cyber Invasion</div>
+</div>
+
+<!-- ── Navbar ── -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">CIA</a>
+    <div class="pill-nav">
+    <a href="/" class="pill-item "><span class="pill-item-icon">⌂</span><span>Home</span></a>
+    <a href="/members/" class="pill-item active"><span class="pill-item-icon">👥</span><span>Crew</span></a>
+    <a href="/projects/" class="pill-item "><span class="pill-item-icon">🏆</span><span>Achievements</span></a>
+    <a href="/about/" class="pill-item "><span class="pill-item-icon">⚡</span><span>About</span></a>
+    <a href="/gallery/" class="pill-item "><span class="pill-item-icon">🖼</span><span>Gallery</span></a>
+    <a href="/contact/" class="pill-item "><span class="pill-item-icon">📡</span><span>Contact</span></a>
+  </div>
+  <a href="https://tinyurl.com/4t5t2vdu" target="_blank" class="nav-join">Join CIA →</a>
+</nav>
+<main>
+  <section id="members" class="section-pad">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">The Team</div>
+    <h2 class="section-title">Our <span>Operatives</span></h2>
+    <p class="section-desc">The operators behind every solve, sprint, and late-night exploit.</p>
+  </div>
+  <div class="member-groups">
+    <div class="member-group reveal">
+      <div class="member-group-header">
+        <div>
+          <div class="member-group-title">Founders</div>
+          <p class="member-group-copy">The three operatives who built Cyber Invasion Army and set the pace for the rest of the crew.</p>
+        </div>
+        <span class="member-group-tag">3 Founders</span>
+      </div>
+      <div class="members-grid">
+        
+      </div>
+    </div>
+    
+    <div class="member-group reveal reveal-delay-1">
+      <div class="member-group-header">
+        <div>
+          <div class="member-group-title">Members</div>
+          <p class="member-group-copy">The wider roster handling the grind across web, crypto, reversing, OSINT, and every other front we step into.</p>
+        </div>
+        <span class="member-group-tag">9 Members</span>
+      </div>
+      <div class="members-grid">
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Advisor Section ── -->
+<section id="advisor">
+  <div class="advisor-watermark">ADVISOR</div>
+  <div class="advisor-inner">
+    <div class="advisor-photo-side reveal">
+      <img src="/assets/images/members/Md._Mostafizur_Rahaman.jpeg" alt="Dr. Abu Sayed Md. Mostafizur Rahaman"/>
+    </div>
+    <div class="advisor-text-side reveal reveal-delay-1">
+      <div class="advisor-label">Team Advisor</div>
+      <div class="advisor-name">Dr. Abu Sayed Md. Mostafizur Rahaman</div>
+      <div class="advisor-divider"></div>
+      <div class="advisor-role">Professor · Dept. of Computer Science &amp; Engineering</div>
+      <div class="advisor-expertise-label">Expertise</div>
+      <div class="advisor-expertise">
+        Digital Forensics · Cyber Security · Cryptography · IoT · S/W Systems
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="copy">© 2025–2026 Cyber Invasion Army (CIA) · BUP, Bangladesh</div>
+  <div class="foot-links">
+    <a href="https://ctftime.org/team/408973" target="_blank">CTFtime</a>
+    <a href="https://www.facebook.com/profile.php?id=61583155799601" target="_blank">Facebook</a>
+    <a href="https://tinyurl.com/4t5t2vdu" target="_blank">Join CIA</a>
+    <a href="index.html">Back to Top ↑</a>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

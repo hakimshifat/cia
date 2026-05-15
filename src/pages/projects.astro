@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+const projects = Object.values(import.meta.glob('../achievements/*.md', { eager: true }))
+  .sort((a, b) => (a.frontmatter.order ?? 999) - (b.frontmatter.order ?? 999));
+---
+<Layout title="Achievements - CIA">
+<section id="projects" class="section-pad">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Our Track Record</div>
+    <h2 class="section-title">Global <span>CTF Operations</span></h2>
+    <p class="section-desc">Selected major events where we stepped into the arena, pulled flags, and left our mark on the scoreboard.</p>
+  </div>
+  <div class="projects-grid">
+    {projects.map(proj => (
+      <div class="project-card reveal">
+        <span class={`project-rank ${proj.frontmatter.rank_class}`}>{proj.frontmatter.rank}</span>
+        <div class="project-card-image">
+          {proj.frontmatter.image ? (
+            <img src={proj.frontmatter.image} alt={proj.frontmatter.title} loading="lazy" />
+          ) : (
+            <span class="project-emoji-placeholder">{proj.frontmatter.emoji}</span>
+          )}
+        </div>
+        <div class="project-card-body">
+          <h3 class="project-title">{proj.frontmatter.title}</h3>
+          <p class="project-desc"><proj.Content /></p>
+          <div class="project-tags">
+            {proj.frontmatter.tags && proj.frontmatter.tags.map(tag => (
+              <span class="project-tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+</Layout>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Cyber Invasion Army — CIA | CTF Team Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+
+<!-- ── Scroll Progress ── -->
+<div id="scroll-progress"></div>
+
+<!-- ── Custom Cursor ── -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ── Noise ── -->
+<div id="noise"></div>
+
+<!-- ── Particle BG ── -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- ── Loading Screen ── -->
+<div id="loading">
+  <script>if(sessionStorage.getItem('cia_visited')){document.getElementById('loading').style.display='none';}</script>
+  <div class="loading-initials">CIA</div>
+  <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
+  <div class="loading-label">Initializing Cyber Invasion</div>
+</div>
+
+<!-- ── Navbar ── -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">CIA</a>
+    <div class="pill-nav">
+    <a href="/" class="pill-item "><span class="pill-item-icon">⌂</span><span>Home</span></a>
+    <a href="/members/" class="pill-item "><span class="pill-item-icon">👥</span><span>Crew</span></a>
+    <a href="/projects/" class="pill-item "><span class="pill-item-icon">🏆</span><span>Achievements</span></a>
+    <a href="/about/" class="pill-item "><span class="pill-item-icon">⚡</span><span>About</span></a>
+    <a href="/gallery/" class="pill-item "><span class="pill-item-icon">🖼</span><span>Gallery</span></a>
+    <a href="/contact/" class="pill-item active"><span class="pill-item-icon">📡</span><span>Contact</span></a>
+  </div>
+  <a href="https://tinyurl.com/4t5t2vdu" target="_blank" class="nav-join">Join CIA →</a>
+</nav>
+<main>
+  <section id="contact" class="section-pad">
+  <div class="section-header reveal">
+    <h2 class="connect-big-title">CONNECT WITH US</h2>
+    <div class="connect-title-line"></div>
+    <p class="connect-sub">We operate in the shadows — but we're always reachable.</p>
+  </div>
+  <div class="contact-inner">
+    <div class="connect-cards" style="max-width:1100px;grid-template-columns:repeat(4,1fr);">
+      <a href="mailto:cyberinvasionarmy@gmail.com" class="connect-card reveal">
+        <div class="connect-card-icon">✉️</div>
+        <div class="connect-card-name">Email</div>
+        <div class="connect-card-divider"></div>
+        <div class="connect-card-sub">Direct Comms</div>
+      </a>
+      <a href="https://www.linkedin.com/company/ciabd/" target="_blank" class="connect-card reveal reveal-delay-1">
+        <div class="connect-card-icon" style="background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.2);font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:20px;color:var(--cyan-light);">in</div>
+        <div class="connect-card-name">LinkedIn</div>
+        <div class="connect-card-divider"></div>
+        <div class="connect-card-sub">Professional Intel</div>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61583155799601" target="_blank" class="connect-card reveal reveal-delay-2">
+        <div class="connect-card-icon" style="background:rgba(236,72,153,.1);border-color:rgba(236,72,153,.2);font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:22px;color:var(--pink-light);">f</div>
+        <div class="connect-card-name">Facebook</div>
+        <div class="connect-card-divider"></div>
+        <div class="connect-card-sub">Visual Logs</div>
+      </a>
+      <a href="https://ctftime.org/team/408973" target="_blank" class="connect-card reveal reveal-delay-3">
+        <div class="connect-card-icon" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.2);">🏆</div>
+        <div class="connect-card-name">CTFtime</div>
+        <div class="connect-card-divider"></div>
+        <div class="connect-card-sub">Arena Stats</div>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="copy">© 2025–2026 Cyber Invasion Army (CIA) · BUP, Bangladesh</div>
+  <div class="foot-links">
+    <a href="https://ctftime.org/team/408973" target="_blank">CTFtime</a>
+    <a href="https://www.facebook.com/profile.php?id=61583155799601" target="_blank">Facebook</a>
+    <a href="https://tinyurl.com/4t5t2vdu" target="_blank">Join CIA</a>
+    <a href="index.html">Back to Top ↑</a>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

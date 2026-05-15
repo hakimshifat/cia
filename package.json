@@ -1,0 +1,28 @@
+{
+  "name": "cia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hakimshifat/cia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hakimshifat/cia/issues"
+  },
+  "homepage": "https://github.com/hakimshifat/cia#readme",
+  "devDependencies": {
+    "astro": "^6.3.3"
+  }
+}
