@@ -3,7 +3,7 @@ name: "Dr. Abu Sayed Md. Mostafizur Rahaman"
 handle: ""
 type: "advisor"
 order: 1
-image: "/assets/images/members/Md._Mostafizur_Rahaman.jpeg"
+image: "/cia/assets/images/members/Md._Mostafizur_Rahaman.jpeg"
 role: "Professor · Dept. of Computer Science & Engineering"
 expertise:
   - "Digital Forensics"
