@@ -5,29 +5,29 @@ const founders = crew.filter(m => m.frontmatter.type === 'founder').sort((a, b) 
 const members = crew.filter(m => m.frontmatter.type === 'member').sort((a, b) => (a.frontmatter.order ?? 999) - (b.frontmatter.order ?? 999));
 const advisors = crew.filter(m => m.frontmatter.type === 'advisor').sort((a, b) => (a.frontmatter.order ?? 999) - (b.frontmatter.order ?? 999));
 ---
-<Layout title="Crew - CIA">
+<Layout title="Shinigami - CIA">
 <section id="members" class="section-pad">
   <div class="section-header reveal">
-    <div class="section-eyebrow">The Team</div>
-    <h2 class="section-title">Our <span>Operatives</span></h2>
-    <p class="section-desc">The operators behind every solve, sprint, and late-night exploit.</p>
+    <div class="section-eyebrow">The Gotei</div>
+    <h2 class="section-title">Our <span>Shinigami</span></h2>
+    <p class="section-desc">The soul reapers behind every solve, sprint, and late-night exploit.</p>
   </div>
   <div class="member-groups">
     <div class="member-group reveal">
       <div class="member-group-header">
         <div>
-          <div class="member-group-title">Founders</div>
-          <p class="member-group-copy">The three operatives who built Cyber Invasion Army and set the pace for the rest of the crew.</p>
+          <div class="member-group-title">Captains</div>
+          <p class="member-group-copy">The three captains who forged Cyber Invasion Army and set the pace for the entire squad.</p>
         </div>
-        <span class="member-group-tag">{founders.length} Founders</span>
+        <span class="member-group-tag">{founders.length} Captains</span>
       </div>
       <div class="members-grid">
         {founders.map(member => (
-          <div class="member-card founder-card founder-profile">
+          <div class="member-card">
             <img class="founder-photo" src={member.frontmatter.image} alt={member.frontmatter.name}/>
             <div class="member-name">{member.frontmatter.name}</div>
-            <div class="member-handle" style="margin-bottom:12px">{member.frontmatter.handle}</div>
-            <span class="member-role role-founder">Founder</span>
+            <div class="member-handle">{member.frontmatter.handle}</div>
+            <span class="member-role role-founder">Captain</span>
             <div class="founder-expertise">
               {member.frontmatter.expertise && member.frontmatter.expertise.map(exp => (
                 <span>{exp}</span>
@@ -46,14 +46,14 @@ const advisors = crew.filter(m => m.frontmatter.type === 'advisor').sort((a, b) 
     <div class="member-group reveal reveal-delay-1">
       <div class="member-group-header">
         <div>
-          <div class="member-group-title">Members</div>
-          <p class="member-group-copy">The wider roster handling the grind across web, crypto, reversing, OSINT, and every other front we step into.</p>
+          <div class="member-group-title">Lieutenants</div>
+          <p class="member-group-copy">The wider squad handling the grind across web, crypto, reversing, OSINT, and every battleground we step into.</p>
         </div>
-        <span class="member-group-tag">{members.length} Members</span>
+        <span class="member-group-tag">{members.length} Lieutenants</span>
       </div>
       <div class="members-grid">
         {members.map(member => (
-          <div class="member-card founder-card founder-profile">
+          <div class="member-card">
             <img class="founder-photo" src={member.frontmatter.image} alt={member.frontmatter.name}/>
             <div class="member-name">{member.frontmatter.name}</div>
             <div class="member-handle">{member.frontmatter.handle}</div>
@@ -74,20 +74,20 @@ const advisors = crew.filter(m => m.frontmatter.type === 'advisor').sort((a, b) 
   </div>
 </section>
 
-<!-- ── Advisor Section ── -->
+<!-- ── Head Captain Section ── -->
 {advisors.map(adv => (
 <section id="advisor">
-  <div class="advisor-watermark">ADVISOR</div>
+  <div class="advisor-watermark">総隊長</div>
   <div class="advisor-inner">
     <div class="advisor-photo-side reveal">
       <img src={adv.frontmatter.image} alt={adv.frontmatter.name}/>
     </div>
     <div class="advisor-text-side reveal reveal-delay-1">
-      <div class="advisor-label">Team Advisor</div>
+      <div class="advisor-label">Head Captain · 総隊長</div>
       <div class="advisor-name">{adv.frontmatter.name}</div>
       <div class="advisor-divider"></div>
       <div class="advisor-role">{adv.frontmatter.role}</div>
-      <div class="advisor-expertise-label">Expertise</div>
+      <div class="advisor-expertise-label">Zanpakutō Abilities</div>
       <div class="advisor-expertise">
         {adv.frontmatter.expertise && adv.frontmatter.expertise.map(exp => (
           <span class="advisor-expertise-tag">{exp}</span>
@@ -98,6 +98,3 @@ const advisors = crew.filter(m => m.frontmatter.type === 'advisor').sort((a, b) 
 </section>
 ))}
 </Layout>
-
-
-

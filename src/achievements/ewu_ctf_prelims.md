@@ -4,6 +4,7 @@ rank: "#8"
 rank_class: "rank-bronze"
 emoji: "🔓"
 order: 6
+category: "national"
 image: ""
 tags:
   - "8th place"

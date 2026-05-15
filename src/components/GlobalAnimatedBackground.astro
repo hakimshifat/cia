@@ -1,0 +1,120 @@
+---
+/**
+ * GlobalAnimatedBackground.astro
+ * Cinematic video background with dark overlays, red glow pulse, and vignette.
+ * Falls back to the static image if video can't play.
+ */
+---
+<div class="global-bg" aria-hidden="true">
+  <video
+    class="global-bg__video"
+    autoplay
+    muted
+    loop
+    playsinline
+    disablepictureinpicture
+    poster="/assets/images/other/bleach-bg.jpeg"
+  >
+    <source src="/assets/videos/background.mp4" type="video/mp4" />
+  </video>
+  <div class="global-bg__overlay"></div>
+  <div class="global-bg__vignette"></div>
+  <div class="global-bg__glow"></div>
+</div>
+
+<style is:global>
+  /* ── Fixed background container ── */
+  .global-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  /* ── Video layer ── */
+  .global-bg__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+  }
+
+  /* ── Dark overlay gradient for text readability ── */
+  .global-bg__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      /* Strong coverage on the left where content lives */
+      linear-gradient(
+        90deg,
+        rgba(5, 5, 8, 0.92) 0%,
+        rgba(5, 5, 8, 0.85) 25%,
+        rgba(5, 5, 8, 0.75) 50%,
+        rgba(5, 5, 8, 0.6) 75%,
+        rgba(5, 5, 8, 0.5) 100%
+      ),
+      /* Top-down gradient for consistent darkness */
+      linear-gradient(
+        180deg,
+        rgba(5, 5, 8, 0.55) 0%,
+        rgba(5, 5, 8, 0.25) 40%,
+        rgba(5, 5, 8, 0.45) 100%
+      );
+  }
+
+  /* ── Vignette — darkens edges for cinematic feel ── */
+  .global-bg__vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 80% 80% at 50% 50%,
+      transparent 40%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+  }
+
+  /* ── Red glow pulse near bottom-right ── */
+  .global-bg__glow {
+    position: absolute;
+    bottom: -10%;
+    right: -5%;
+    width: 55%;
+    height: 55%;
+    background: radial-gradient(
+      ellipse at 70% 70%,
+      rgba(180, 20, 20, 0.12) 0%,
+      rgba(140, 10, 10, 0.06) 40%,
+      transparent 70%
+    );
+    animation: glowPulse 6s ease-in-out infinite;
+    will-change: opacity;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ── Accessibility: respect reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .global-bg__video {
+      /* Pause the video via CSS — JS fallback below */
+      animation-play-state: paused;
+    }
+    .global-bg__glow {
+      animation: none;
+      opacity: 0.7;
+    }
+  }
+</style>
+
+<script is:inline>
+  // Pause video for users who prefer reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const vid = document.querySelector('.global-bg__video');
+    if (vid) vid.pause();
+  }
+</script>

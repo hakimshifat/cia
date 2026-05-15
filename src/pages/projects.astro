@@ -1,37 +1,78 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const projects = Object.values(import.meta.glob('../achievements/*.md', { eager: true }))
+const all = Object.values(import.meta.glob('../achievements/*.md', { eager: true }))
   .sort((a, b) => (a.frontmatter.order ?? 999) - (b.frontmatter.order ?? 999));
+const international = all.filter(p => p.frontmatter.category === 'international');
+const national = all.filter(p => p.frontmatter.category === 'national');
 ---
-<Layout title="Achievements - CIA">
+<Layout title="Battle Record - CIA">
 <section id="projects" class="section-pad">
   <div class="section-header reveal">
-    <div class="section-eyebrow">Our Track Record</div>
-    <h2 class="section-title">Global <span>CTF Operations</span></h2>
-    <p class="section-desc">Selected major events where we stepped into the arena, pulled flags, and left our mark on the scoreboard.</p>
+    <div class="section-eyebrow">Battle Record</div>
+    <h2 class="section-title">Hollow <span>Purification Log</span></h2>
+    <p class="section-desc">Every arena we entered, every Hollow we defeated, every flag we captured — recorded here.</p>
   </div>
-  <div class="projects-grid">
-    {projects.map(proj => (
-      <div class="project-card reveal">
-        <span class={`project-rank ${proj.frontmatter.rank_class}`}>{proj.frontmatter.rank}</span>
-        <div class="project-card-image">
-          {proj.frontmatter.image ? (
-            <img src={proj.frontmatter.image} alt={proj.frontmatter.title} loading="lazy" />
-          ) : (
-            <span class="project-emoji-placeholder">{proj.frontmatter.emoji}</span>
-          )}
-        </div>
-        <div class="project-card-body">
-          <h3 class="project-title">{proj.frontmatter.title}</h3>
-          <p class="project-desc"><proj.Content /></p>
-          <div class="project-tags">
-            {proj.frontmatter.tags && proj.frontmatter.tags.map(tag => (
-              <span class="project-tag">{tag}</span>
-            ))}
+
+  <!-- ── International Battles ── -->
+  <div class="battle-subsection reveal">
+    <div class="battle-subsection-header">
+      <h3 class="battle-subsection-title">International Battles</h3>
+      <span class="battle-subsection-tag">{international.length} Operations</span>
+    </div>
+    <div class="projects-grid">
+      {international.map(proj => (
+        <div class="project-card reveal">
+          <span class={`project-rank ${proj.frontmatter.rank_class}`}>{proj.frontmatter.rank}</span>
+          <div class="project-card-image">
+            {proj.frontmatter.image ? (
+              <img src={proj.frontmatter.image} alt={proj.frontmatter.title} loading="lazy" />
+            ) : (
+              <span class="project-emoji-placeholder">{proj.frontmatter.emoji}</span>
+            )}
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-title">{proj.frontmatter.title}</h3>
+            <p class="project-desc"><proj.Content /></p>
+            <div class="project-tags">
+              {proj.frontmatter.tags && proj.frontmatter.tags.map(tag => (
+                <span class="project-tag">{tag}</span>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    ))}
+      ))}
+    </div>
+  </div>
+
+  <!-- ── National Battles ── -->
+  <div class="battle-subsection reveal" style="margin-top:64px;">
+    <div class="battle-subsection-header">
+      <h3 class="battle-subsection-title">National Battles</h3>
+      <span class="battle-subsection-tag">{national.length} Operations</span>
+    </div>
+    <div class="projects-grid">
+      {national.map(proj => (
+        <div class="project-card reveal">
+          <span class={`project-rank ${proj.frontmatter.rank_class}`}>{proj.frontmatter.rank}</span>
+          <div class="project-card-image">
+            {proj.frontmatter.image ? (
+              <img src={proj.frontmatter.image} alt={proj.frontmatter.title} loading="lazy" />
+            ) : (
+              <span class="project-emoji-placeholder">{proj.frontmatter.emoji}</span>
+            )}
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-title">{proj.frontmatter.title}</h3>
+            <p class="project-desc"><proj.Content /></p>
+            <div class="project-tags">
+              {proj.frontmatter.tags && proj.frontmatter.tags.map(tag => (
+                <span class="project-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 </Layout>

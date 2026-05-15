@@ -4,6 +4,7 @@ rank: "#22"
 rank_class: "rank-gold"
 emoji: "⚡"
 order: 4
+category: "international"
 image: ""
 tags:
   - "3452 pts"

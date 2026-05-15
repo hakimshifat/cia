@@ -4,6 +4,7 @@ rank: "#43"
 rank_class: "rank-silver"
 emoji: "🐿️"
 order: 8
+category: "international"
 image: ""
 tags:
   - "3468 pts"

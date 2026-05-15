@@ -4,6 +4,7 @@ rank: "#37"
 rank_class: "rank-bronze"
 emoji: "🤠"
 order: 9
+category: "international"
 image: ""
 tags:
   - "37th place"

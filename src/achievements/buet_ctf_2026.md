@@ -4,6 +4,7 @@ rank: "#7"
 rank_class: "rank-gold"
 emoji: "🇧🇩"
 order: 2
+category: "national"
 image: ""
 tags:
   - "#7 finish"
