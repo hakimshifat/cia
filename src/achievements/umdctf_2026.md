@@ -5,7 +5,7 @@ rank_class: "rank-gold"
 emoji: "🎯"
 order: 1
 category: "international"
-image: ""
+image: "/cia/assets/images/achievements/umd.jpeg"
 tags:
   - "2193 pts"
   - "49.949 rating"

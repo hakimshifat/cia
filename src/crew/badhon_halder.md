@@ -2,7 +2,7 @@
 name: "Badhon Halder"
 handle: "@Badhon"
 type: "member"
-order: 10
+order: 17
 image: "/cia/assets/images/members/Badhon_halder.jpeg"
 expertise:
   - "Cryptography"

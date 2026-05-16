@@ -5,7 +5,7 @@ rank_class: "rank-gold"
 emoji: "🇧🇩"
 order: 2
 category: "national"
-image: ""
+image: "/cia/assets/images/achievements/rbuet.jpeg"
 tags:
   - "#7 finish"
   - "National stage"

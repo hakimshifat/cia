@@ -2,7 +2,7 @@
 name: "Golam Ali Kibria"
 handle: "@NetCracker"
 type: "member"
-order: 12
+order: 10
 image: "/cia/assets/images/members/Golam_Ali_Kibria.jpeg"
 expertise:
   - "Networking"

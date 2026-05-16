@@ -2,7 +2,7 @@
 name: "Tashfin Ruaid"
 handle: "@UltraWot"
 type: "member"
-order: 17
+order: 12
 image: "/cia/assets/images/members/Tashfin.jpeg"
 expertise:
   - "Forensics"
