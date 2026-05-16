@@ -1,0 +1,13 @@
+---
+title: "BUP CTF"
+rank: "#10"
+rank_class: "rank-silver"
+emoji: "🎯"
+order: 10
+category: "national"
+image: "/cia/assets/images/achievements/bup.jpeg"
+tags:
+  - "#10 finish"
+  - "National run"
+---
+Finished 10th at BUP CTF, adding another major national placement to the team's record.

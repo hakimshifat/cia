@@ -25,7 +25,7 @@ if(card){
 const revealEls=document.querySelectorAll('.reveal');
 const revObserver=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revObserver.unobserve(e.target)}});
-},{threshold:.15});
+},{threshold: 0, rootMargin: '0px 0px -50px 0px'});
 revealEls.forEach(el=>revObserver.observe(el));
 
 const bars=document.querySelectorAll('.skill-bar-fill');

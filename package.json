@@ -24,5 +24,9 @@
   "homepage": "https://github.com/hakimshifat/cia#readme",
   "devDependencies": {
     "astro": "^6.3.3"
+  },
+  "dependencies": {
+    "@vite-pwa/astro": "^1.2.0",
+    "workbox-window": "^7.4.1"
   }
 }
