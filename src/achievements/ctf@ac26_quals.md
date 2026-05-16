@@ -1,6 +1,6 @@
 ---
 title: "CTF@AC26 Quals"
-rank: "#22"
+rank: "#15"
 rank_class: "rank-gold"
 emoji: "🔐"
 order: 5

@@ -74,20 +74,20 @@ const advisors = crew.filter(m => m.frontmatter.type === 'advisor').sort((a, b) 
   </div>
 </section>
 
-<!-- ── Head Captain Section ── -->
+<!-- ── Advisor Section ── -->
 {advisors.map(adv => (
 <section id="advisor">
-  <div class="advisor-watermark">総隊長</div>
+  <div class="advisor-watermark">Advisor</div>
   <div class="advisor-inner">
     <div class="advisor-photo-side reveal">
       <img src={adv.frontmatter.image} alt={adv.frontmatter.name}/>
     </div>
     <div class="advisor-text-side reveal reveal-delay-1">
-      <div class="advisor-label">Head Captain · 総隊長</div>
+      <div class="advisor-label">Advisor</div>
       <div class="advisor-name">{adv.frontmatter.name}</div>
       <div class="advisor-divider"></div>
       <div class="advisor-role">{adv.frontmatter.role}</div>
-      <div class="advisor-expertise-label">Zanpakutō Abilities</div>
+      <div class="advisor-expertise-label">Expertise</div>
       <div class="advisor-expertise">
         {adv.frontmatter.expertise && adv.frontmatter.expertise.map(exp => (
           <span class="advisor-expertise-tag">{exp}</span>
