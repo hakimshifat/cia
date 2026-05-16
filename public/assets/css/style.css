@@ -2339,7 +2339,43 @@
     }
   }
 
+  @media(max-width:900px) {
+    .members-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media(max-width:700px) {
+    nav {
+      padding: 0 16px;
+      gap: 12px;
+    }
+
+    .pill-nav {
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      max-width: 60vw;
+    }
+
+    .pill-item {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .pill-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-logo-img {
+      height: 48px;
+    }
+
+    .nav-join {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+
     .member-group {
       padding: 22px
     }
@@ -2355,6 +2391,11 @@
 
     .founder-profile .member-name {
       font-size: 20px;
+    }
+
+    .members-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
     }
 
     .gallery-grid {

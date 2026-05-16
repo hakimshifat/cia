@@ -1,4 +1,5 @@
 ---
+import { pwaInfo } from 'virtual:pwa-info';
 import GlobalAnimatedBackground from '../components/GlobalAnimatedBackground.astro';
 const { title } = Astro.props;
 const currentPath = Astro.url.pathname;
@@ -13,6 +14,7 @@ const currentPath = Astro.url.pathname;
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Oswald:wght@700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/cia/assets/css/style.css">
+{ pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
 </head>
 
 <body>
