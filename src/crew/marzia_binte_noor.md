@@ -3,7 +3,7 @@ name: "Marzia Binte Noor"
 handle: "@nooriiieeee3"
 type: "member"
 order: 13
-image: "/cia/assets/images/members/Marzia_Binte_Noor.jpeg"
+image: "/cia/assets/images/members/Marzia_Binte_Noor.webp"
 expertise:
   - "Cryptography"
 socials:

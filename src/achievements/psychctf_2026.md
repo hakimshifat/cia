@@ -5,7 +5,7 @@ rank_class: "rank-bronze"
 emoji: "🤠"
 order: 9
 category: "international"
-image: ""
+image: "/cia/assets/images/achievements/psychctf.webp"
 tags:
   - "37th place"
   - "2026 season"

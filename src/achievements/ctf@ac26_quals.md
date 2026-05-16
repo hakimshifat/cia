@@ -5,7 +5,7 @@ rank_class: "rank-gold"
 emoji: "🔐"
 order: 5
 category: "international"
-image: "/cia/assets/images/achievements/ctfac.jpeg"
+image: "/cia/assets/images/achievements/ctfac.webp"
 tags:
   - "2100 pts"
   - "16.483 rating"

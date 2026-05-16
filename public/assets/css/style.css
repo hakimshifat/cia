@@ -1253,10 +1253,31 @@
     object-fit: cover;
     display: block;
     transition: transform .4s ease;
+    z-index: 2;
+    position: relative;
+  }
+
+  .project-bg-number {
+    position: absolute;
+    bottom: -15px;
+    right: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 140px;
+    font-weight: 800;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    z-index: 1;
+    transition: transform .4s ease, color .4s ease;
   }
 
   .project-card:hover .project-card-image img {
     transform: scale(1.05);
+  }
+
+  .project-card:hover .project-bg-number {
+    color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05) translateY(-5px);
   }
 
   .project-card-image .project-emoji-placeholder {

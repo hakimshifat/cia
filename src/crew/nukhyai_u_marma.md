@@ -3,7 +3,7 @@ name: "Nukhyai U Marma"
 handle: "@nukpickab00"
 type: "member"
 order: 15
-image: "/cia/assets/images/members/Nukhyai_U_Marma.jpeg"
+image: "/cia/assets/images/members/Nukhyai_U_Marma.webp"
 expertise:
   - "Web"
   - "OSINT"

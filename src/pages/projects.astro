@@ -1,9 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const all = Object.values(import.meta.glob('../achievements/*.md', { eager: true }))
-  .sort((a, b) => (a.frontmatter.order ?? 999) - (b.frontmatter.order ?? 999));
-const international = all.filter(p => p.frontmatter.category === 'international');
-const national = all.filter(p => p.frontmatter.category === 'national');
+const getPosition = (rankStr) => {
+  if (!rankStr) return 999;
+  const num = parseInt(rankStr.replace(/\D/g, ''), 10);
+  return isNaN(num) ? 999 : num;
+};
+
+const all = Object.values(import.meta.glob('../achievements/*.md', { eager: true }));
+const international = all.filter(p => p.frontmatter.category === 'international').sort((a, b) => getPosition(a.frontmatter.rank) - getPosition(b.frontmatter.rank));
+const national = all.filter(p => p.frontmatter.category === 'national').sort((a, b) => getPosition(a.frontmatter.rank) - getPosition(b.frontmatter.rank));
 ---
 <Layout title="Battle Record - CIA">
 <section id="projects" class="section-pad">
@@ -24,6 +29,11 @@ const national = all.filter(p => p.frontmatter.category === 'national');
         <div class="project-card reveal">
           <span class={`project-rank ${proj.frontmatter.rank_class}`}>{proj.frontmatter.rank}</span>
           <div class="project-card-image">
+            {getPosition(proj.frontmatter.rank) !== 999 && (
+              <span class="project-bg-number">
+                {getPosition(proj.frontmatter.rank) < 10 ? `0${getPosition(proj.frontmatter.rank)}` : getPosition(proj.frontmatter.rank)}
+              </span>
+            )}
             {proj.frontmatter.image ? (
               <img src={proj.frontmatter.image} alt={proj.frontmatter.title} loading="lazy" />
             ) : (
@@ -55,6 +65,11 @@ const national = all.filter(p => p.frontmatter.category === 'national');
         <div class="project-card reveal">
           <span class={`project-rank ${proj.frontmatter.rank_class}`}>{proj.frontmatter.rank}</span>
           <div class="project-card-image">
+            {getPosition(proj.frontmatter.rank) !== 999 && (
+              <span class="project-bg-number">
+                {getPosition(proj.frontmatter.rank) < 10 ? `0${getPosition(proj.frontmatter.rank)}` : getPosition(proj.frontmatter.rank)}
+              </span>
+            )}
             {proj.frontmatter.image ? (
               <img src={proj.frontmatter.image} alt={proj.frontmatter.title} loading="lazy" />
             ) : (

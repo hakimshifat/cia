@@ -5,7 +5,7 @@ rank_class: "rank-silver"
 emoji: "🎯"
 order: 10
 category: "national"
-image: "/cia/assets/images/achievements/bup.jpeg"
+image: "/cia/assets/images/achievements/bup.webp"
 tags:
   - "#10 finish"
   - "National run"

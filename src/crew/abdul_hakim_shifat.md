@@ -3,7 +3,7 @@ name: "Abdul Hakim Shifat"
 handle: "@joyboy__"
 type: "founder"
 order: 3
-image: "/cia/assets/images/members/shifat.jpeg"
+image: "/cia/assets/images/members/shifat.webp"
 expertise:
   - "Reverse"
   - "PWN"
