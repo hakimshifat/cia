@@ -3,7 +3,6 @@ title: "UMDCTF 2026"
 rank: "#14"
 rank_class: "rank-gold"
 emoji: "🎯"
-order: 1
 category: "international"
 image: "/cia/assets/images/achievements/umd.webp"
 tags:

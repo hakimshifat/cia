@@ -3,7 +3,6 @@ title: "CUET CTF 2025"
 rank: "#13"
 rank_class: "rank-silver"
 emoji: "🏫"
-order: 7
 category: "national"
 image: "/cia/assets/images/achievements/cuet.webp"
 tags:

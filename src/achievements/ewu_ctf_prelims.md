@@ -3,7 +3,6 @@ title: "EWU CTF Prelims"
 rank: "#8"
 rank_class: "rank-bronze"
 emoji: "🔓"
-order: 6
 category: "national"
 image: "/cia/assets/images/achievements/ewu26.webp"
 tags:

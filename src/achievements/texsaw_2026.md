@@ -3,7 +3,6 @@ title: "TexSAW 2026"
 rank: "#22"
 rank_class: "rank-gold"
 emoji: "⚡"
-order: 4
 category: "international"
 image: "/cia/assets/images/achievements/texsaw.webp"
 tags:

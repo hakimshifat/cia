@@ -3,7 +3,6 @@ title: "squ1rrel CTF 2026"
 rank: "#43"
 rank_class: "rank-silver"
 emoji: "🐿️"
-order: 8
 category: "international"
 image: "/cia/assets/images/achievements/squrill.webp"
 tags:

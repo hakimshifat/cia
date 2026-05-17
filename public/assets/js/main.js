@@ -21,49 +21,12 @@ if(card){
   card.addEventListener('mouseleave',()=>{card.style.transform='none'});
 }
 
-// ── IntersectionObserver — reveals + skill bars ──
+// ── IntersectionObserver — reveals ──
 const revealEls=document.querySelectorAll('.reveal');
 const revObserver=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revObserver.unobserve(e.target)}});
 },{threshold: 0, rootMargin: '0px 0px -50px 0px'});
 revealEls.forEach(el=>revObserver.observe(el));
-
-const bars=document.querySelectorAll('.skill-bar-fill');
-const barObserver=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.style.width=e.target.dataset.width+'%';
-      barObserver.unobserve(e.target);
-    }
-  });
-},{threshold:.3});
-bars.forEach(b=>barObserver.observe(b));
-
-// ── Ripple on avatar ──
-const avatar=document.getElementById('contact-avatar');
-if(avatar){
-  avatar.addEventListener('click',e=>{
-    const ripple=document.createElement('span');
-    ripple.className='ripple';
-    avatar.appendChild(ripple);
-    setTimeout(()=>ripple.remove(),700);
-  });
-}
-
-// ── Scroll Progress ──
-const progressBar=document.getElementById('scroll-progress');
-window.addEventListener('scroll',()=>{
-  const scrolled=window.scrollY;
-  const total=document.documentElement.scrollHeight-window.innerHeight;
-  progressBar.style.width=(scrolled/total*100)+'%';
-},{ passive:true });
-
-// ── Hamburger ──
-const ham=document.getElementById('hamburger');
-const navLinks=document.getElementById('nav-links');
-if(ham){
-  ham.addEventListener('click',()=>navLinks.classList.toggle('open'));
-}
 
 // ── CTFtime Live Stats ──
 (async function(){

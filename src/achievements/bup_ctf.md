@@ -3,7 +3,6 @@ title: "BUP CTF"
 rank: "#10"
 rank_class: "rank-silver"
 emoji: "🎯"
-order: 10
 category: "national"
 image: "/cia/assets/images/achievements/bup.webp"
 tags:

@@ -3,7 +3,6 @@ title: "CTF@AC26 Quals"
 rank: "#15"
 rank_class: "rank-gold"
 emoji: "🔐"
-order: 5
 category: "international"
 image: "/cia/assets/images/achievements/ctfac.webp"
 tags:

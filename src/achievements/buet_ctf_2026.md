@@ -3,7 +3,6 @@ title: "BUET CTF 2026"
 rank: "#7"
 rank_class: "rank-gold"
 emoji: "🇧🇩"
-order: 2
 category: "national"
 image: "/cia/assets/images/achievements/rbuet.webp"
 tags:
