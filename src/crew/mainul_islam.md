@@ -3,7 +3,7 @@ name: "Mainul Islam"
 handle: "@IramTrace"
 type: "founder"
 order: 2
-image: "/cia/assets/images/members/Mainul.webp"
+image: "/cia/assets/images/members/Mainul.png"
 expertise:
   - "Cryptography"
   - "Forensics"

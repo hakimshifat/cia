@@ -37,7 +37,7 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: '/cia/index.html',
-        globPatterns: ['**/*.{css,js,html,svg,ico,txt}']
+        globPatterns: ['**/*.{css,js,html,svg,ico,txt,png,jpg,jpeg,webp}']
       }
     })
   ]
