@@ -138,20 +138,42 @@ revealEls.forEach(el=>revObserver.observe(el));
   // Skip on mobile/touch devices
   if('ontouchstart' in window || navigator.maxTouchPoints>0 || window.innerWidth<1024) return;
   const rick='https://www.youtube.com/watch?v=-1oKO5NNSVI';
-  
-  // Threshold for docked DevTools detection
-  const threshold = 160;
-  
+
+  const widthThreshold = 160;
+  const heightThreshold = 180;
+  let strikes = 0;
+  let triggered = false;
+
+  function redirect(){
+    if(triggered)return;
+    triggered = true;
+    window.location.replace(rick);
+  }
+
+  window.addEventListener('keydown',e=>{
+    const key=e.key.toLowerCase();
+    const devtoolsCombo =
+      e.key === 'F12' ||
+      (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(key)) ||
+      (e.ctrlKey && key === 'u');
+
+    if(devtoolsCombo){
+      e.preventDefault();
+      redirect();
+    }
+  });
+
   setInterval(function(){
+    if(triggered)return;
+
     // Method 1: Docked Check
     // If DevTools is docked, it takes up screen space, making inner dimensions noticeably smaller than outer.
-    const isDocked = (window.outerWidth - window.innerWidth > threshold) || 
-                     (window.outerHeight - window.innerHeight > threshold);
-    
-    if (isDocked) {
-      window.location.replace(rick);
-      return;
-    }
+    const widthGap = window.outerWidth - window.innerWidth;
+    const heightGap = window.outerHeight - window.innerHeight;
+    const isDocked =
+      window.outerWidth > 900 &&
+      window.outerHeight > 600 &&
+      (widthGap > widthThreshold || heightGap > heightThreshold);
 
     // Method 2: Timing Check
     // This catches undocked/detached DevTools.
@@ -161,8 +183,11 @@ revealEls.forEach(el=>revObserver.observe(el));
     const after = performance.now();
     
     // If the time diff is significantly large, DevTools was open and paused the thread.
-    if (after - before > 100) {
-      window.location.replace(rick);
-    }
+    const isPaused = after - before > 120;
+
+    if(isDocked || isPaused)strikes++;
+    else strikes = Math.max(0,strikes-1);
+
+    if(strikes >= 1)redirect();
   }, 1000);
 })();
