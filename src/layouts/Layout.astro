@@ -48,7 +48,23 @@ const currentPath = Astro.url.pathname;
     <a href="/contact/" class={`pill-item ${currentPath.includes("/contact") ? "active" : ""}`}>Senkaimon</a>
   </div>
   <a href="https://tinyurl.com/4t5t2vdu" target="_blank" class="nav-join">Enlist →</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- ── Mobile Menu Overlay ── -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-inner">
+    <a href="/" class={`mobile-menu-link ${currentPath === "/" || currentPath === "/index.html" ? "active" : ""}`}>Seireitei</a>
+    <a href="/members/" class={`mobile-menu-link ${currentPath.includes("/members") ? "active" : ""}`}>Shinigami</a>
+    <a href="/projects/" class={`mobile-menu-link ${currentPath.includes("/projects") ? "active" : ""}`}>Battles</a>
+    <a href="/about/" class={`mobile-menu-link ${currentPath.includes("/about") ? "active" : ""}`}>Soul Society</a>
+    <a href="/gallery/" class={`mobile-menu-link ${currentPath.includes("/gallery") ? "active" : ""}`}>Archives</a>
+    <a href="/contact/" class={`mobile-menu-link ${currentPath.includes("/contact") ? "active" : ""}`}>Senkaimon</a>
+    <a href="https://tinyurl.com/4t5t2vdu" target="_blank" class="mobile-menu-cta">Enlist →</a>
+  </div>
+</div>
 <main>
   <slot />
 </main>

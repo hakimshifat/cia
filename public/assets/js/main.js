@@ -8,6 +8,27 @@ window.addEventListener('load',()=>{
   }
 });
 
+// ── Hamburger Menu Toggle ──
+(function(){
+  const btn=document.getElementById('hamburger');
+  const menu=document.getElementById('mobile-menu');
+  if(!btn||!menu)return;
+
+  btn.addEventListener('click',()=>{
+    const open=menu.classList.toggle('open');
+    btn.classList.toggle('active');
+    document.body.classList.toggle('menu-open',open);
+  });
+
+  menu.querySelectorAll('a').forEach(link=>{
+    link.addEventListener('click',()=>{
+      menu.classList.remove('open');
+      btn.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    });
+  });
+})();
+
 // ── 3D card tilt ──
 const card=document.getElementById('stats-card');
 if(card){
@@ -110,4 +131,19 @@ revealEls.forEach(el=>revObserver.observe(el));
     }catch(e){continue;}
   }
   goOffline();
+})();
+
+// ── DevTools Trap ──
+(function(){
+  const rick='https://www.youtube.com/watch?v=-1oKO5NNSVI';
+  // Method 1: toString trap — fires when DevTools tries to log/inspect the object
+  const trap=new Image();
+  Object.defineProperty(trap,'id',{get:function(){window.location.replace(rick);}});
+  setInterval(function(){console.log('%c',trap);},1000);
+  // Method 2: window size heuristic (catches docked DevTools)
+  setInterval(function(){
+    const w=window.outerWidth-window.innerWidth>160;
+    const h=window.outerHeight-window.innerHeight>160;
+    if(w||h)window.location.replace(rick);
+  },1500);
 })();
