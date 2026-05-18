@@ -1,0 +1,36 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  const posts = Object.entries(import.meta.glob('../../../blogs/*.md', { eager: true }))
+    .filter(([, post]) => !post.frontmatter.draft);
+
+  return posts.map(([path, post]) => ({
+    params: { slug: path.split('/').pop().replace(/\.md$/, '') },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = post;
+---
+<Layout title={`${post.frontmatter.title} - CIA`}>
+<article class="resource-article section-pad">
+  <header class="resource-article-header reveal">
+    <a class="resource-back-link" href="/resources/blogs/">Back to Blogs</a>
+    <div class="section-eyebrow">Blog</div>
+    <h1 class="section-title">{post.frontmatter.title}</h1>
+    <p class="section-desc">{post.frontmatter.description}</p>
+    <div class="resource-article-meta">
+      <span>{post.frontmatter.author}</span>
+      <span>{new Date(post.frontmatter.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
+    </div>
+    <div class="project-tags">
+      {post.frontmatter.tags && post.frontmatter.tags.map(tag => <span class="project-tag">{tag}</span>)}
+    </div>
+  </header>
+  <div class="resource-prose reveal reveal-delay-1">
+    <Content />
+  </div>
+</article>
+</Layout>

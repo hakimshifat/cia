@@ -138,8 +138,31 @@ revealEls.forEach(el=>revObserver.observe(el));
   // Skip on mobile/touch devices
   if('ontouchstart' in window || navigator.maxTouchPoints>0 || window.innerWidth<1024) return;
   const rick='https://www.youtube.com/watch?v=-1oKO5NNSVI';
-  // toString trap — fires when DevTools tries to log/inspect the object
-  const trap=new Image();
-  Object.defineProperty(trap,'id',{get:function(){window.location.replace(rick);}});
-  setInterval(function(){console.log('%c',trap);},1000);
+  
+  // Threshold for docked DevTools detection
+  const threshold = 160;
+  
+  setInterval(function(){
+    // Method 1: Docked Check
+    // If DevTools is docked, it takes up screen space, making inner dimensions noticeably smaller than outer.
+    const isDocked = (window.outerWidth - window.innerWidth > threshold) || 
+                     (window.outerHeight - window.innerHeight > threshold);
+    
+    if (isDocked) {
+      window.location.replace(rick);
+      return;
+    }
+
+    // Method 2: Timing Check
+    // This catches undocked/detached DevTools.
+    const before = performance.now();
+    // The debugger statement pauses execution ONLY if DevTools is open.
+    debugger; 
+    const after = performance.now();
+    
+    // If the time diff is significantly large, DevTools was open and paused the thread.
+    if (after - before > 100) {
+      window.location.replace(rick);
+    }
+  }, 1000);
 })();

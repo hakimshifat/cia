@@ -1,0 +1,36 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const posts = Object.entries(import.meta.glob('../../../blogs/*.md', { eager: true }))
+  .map(([path, post]) => ({
+    ...post,
+    slug: path.split('/').pop().replace(/\.md$/, '')
+  }))
+  .filter(post => !post.frontmatter.draft)
+  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+---
+<Layout title="Blogs - CIA">
+<section id="resources-blogs" class="section-pad">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Blogs</div>
+    <h2 class="section-title">Field <span>Journal</span></h2>
+    <p class="section-desc">Research notes, reflections, and security writing from the squad.</p>
+  </div>
+  <div class="resource-grid">
+    {posts.map(post => (
+      <a class="resource-card reveal" href={`/resources/blogs/${post.slug}/`}>
+        {post.frontmatter.image && <img src={post.frontmatter.image} alt={post.frontmatter.title} loading="lazy" />}
+        <span class="resource-card-eyebrow">{new Date(post.frontmatter.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
+        <h3>{post.frontmatter.title}</h3>
+        <p>{post.frontmatter.description}</p>
+        <div class="resource-meta">
+          <span>{post.frontmatter.author}</span>
+        </div>
+        <div class="project-tags">
+          {post.frontmatter.tags && post.frontmatter.tags.map(tag => <span class="project-tag">{tag}</span>)}
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+</Layout>

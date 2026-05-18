@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const sections = [
+  {
+    title: 'Writeups',
+    href: '/resources/writeups/',
+    eyebrow: 'Challenge Notes',
+    description: 'Solved paths, payload chains, and the thinking behind our CTF captures.'
+  },
+  {
+    title: 'Projects',
+    href: '/resources/projects/',
+    eyebrow: 'Build Log',
+    description: 'Tools, experiments, and team engineering work from the Cyber Invasion Army lab.'
+  },
+  {
+    title: 'Blogs',
+    href: '/resources/blogs/',
+    eyebrow: 'Field Journal',
+    description: 'Research notes, reflections, and security writing from the squad.'
+  }
+];
+---
+<Layout title="Resources - CIA">
+<section id="resources" class="section-pad">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Resources</div>
+    <h2 class="section-title">Research <span>Archive</span></h2>
+    <p class="section-desc">Writeups, projects, and blogs from the team, collected in one place.</p>
+  </div>
+  <div class="resource-grid resource-grid-three">
+    {sections.map((section, index) => (
+      <a class={`resource-card reveal reveal-delay-${index + 1}`} href={section.href}>
+        <span class="resource-card-eyebrow">{section.eyebrow}</span>
+        <h3>{section.title}</h3>
+        <p>{section.description}</p>
+        <span class="resource-card-link">Enter Archive</span>
+      </a>
+    ))}
+  </div>
+</section>
+</Layout>
