@@ -4,7 +4,7 @@ rank: "#22"
 rank_class: "rank-gold"
 emoji: "⚡"
 category: "international"
-image: "/cia/assets/images/achievements/texsaw.webp"
+image: "/assets/images/achievements/texsaw.webp"
 tags:
   - "3452 pts"
   - "28.394 rating"

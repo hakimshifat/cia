@@ -3,7 +3,7 @@ name: "Badhon Halder"
 handle: "@Badhon"
 type: "member"
 order: 17
-image: "/cia/assets/images/members/Badhon_halder.webp"
+image: "/assets/images/members/Badhon_halder.webp"
 expertise:
   - "Cryptography"
   - "Forensics"

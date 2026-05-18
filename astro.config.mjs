@@ -2,13 +2,13 @@ import { defineConfig } from 'astro/config';
 import AstroPWA from '@vite-pwa/astro';
 
 export default defineConfig({
-  site: 'https://hakimshifat.github.io',
-  base: '/cia',
+  site: 'https://cyberinvasionarmy.com',
+  base: '/',
   integrations: [
     AstroPWA({
       registerType: 'autoUpdate',
-      base: '/cia/',
-      scope: '/cia/',
+      base: '/',
+      scope: '/',
       manifest: {
         name: 'Cyber Invasion Army',
         short_name: 'CIA',
@@ -36,7 +36,7 @@ export default defineConfig({
         ]
       },
       workbox: {
-        navigateFallback: '/cia/index.html',
+        navigateFallback: '/index.html',
         globPatterns: ['**/*.{css,js,html,svg,ico,txt,png,jpg,jpeg,webp}']
       }
     })

@@ -4,7 +4,7 @@ rank: "#8"
 rank_class: "rank-bronze"
 emoji: "🔓"
 category: "national"
-image: "/cia/assets/images/achievements/ewu26.webp"
+image: "/assets/images/achievements/ewu26.webp"
 tags:
   - "8th place"
   - "Prelims"

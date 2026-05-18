@@ -3,7 +3,7 @@ name: "Nahian Al Mubin"
 handle: "@nahianalmubin2006"
 type: "member"
 order: 14
-image: "/cia/assets/images/members/Nahian_Al_Mubin.webp"
+image: "/assets/images/members/Nahian_Al_Mubin.webp"
 expertise:
   - "OSINT"
   - "Forensics"

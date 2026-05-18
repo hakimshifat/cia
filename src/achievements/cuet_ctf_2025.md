@@ -4,7 +4,7 @@ rank: "#13"
 rank_class: "rank-silver"
 emoji: "🏫"
 category: "national"
-image: "/cia/assets/images/achievements/cuet.webp"
+image: "/assets/images/achievements/cuet.webp"
 tags:
   - "#13 finish"
   - "National run"

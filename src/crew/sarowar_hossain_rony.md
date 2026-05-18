@@ -3,7 +3,7 @@ name: "Sarowar Hossain Rony"
 handle: "@Carnage_"
 type: "founder"
 order: 1
-image: "/cia/assets/images/members/Rony.png"
+image: "/assets/images/members/Rony.png"
 expertise:
   - "Web Exploitation"
   - "PWN"

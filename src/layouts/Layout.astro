@@ -10,11 +10,11 @@ const currentPath = Astro.url.pathname;
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>{title || "CIA - Cyber Invasion Army"}</title>
-<link rel="icon" type="image/png" href="/cia/favicon.png" />
+<link rel="icon" type="image/png" href="/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Oswald:wght@700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/cia/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css">
 { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
 </head>
 
@@ -38,14 +38,14 @@ const currentPath = Astro.url.pathname;
 
 <!-- ── Navbar ── -->
 <nav id="navbar">
-  <a href="/cia/" class="nav-logo"><img src="/cia/assets/images/other/cia-logo-transparent.webp" alt="CIA" class="nav-logo-img"/></a>
+  <a href="/" class="nav-logo"><img src="/assets/images/other/cia-logo-transparent.webp" alt="CIA" class="nav-logo-img"/></a>
     <div class="pill-nav">
-    <a href="/cia/" class={`pill-item ${currentPath === "/cia/" || currentPath === "/cia/index.html" ? "active" : ""}`}>Seireitei</a>
-    <a href="/cia/members/" class={`pill-item ${currentPath.includes("/members") ? "active" : ""}`}>Shinigami</a>
-    <a href="/cia/projects/" class={`pill-item ${currentPath.includes("/projects") ? "active" : ""}`}>Battles</a>
-    <a href="/cia/about/" class={`pill-item ${currentPath.includes("/about") ? "active" : ""}`}>Soul Society</a>
-    <a href="/cia/gallery/" class={`pill-item ${currentPath.includes("/gallery") ? "active" : ""}`}>Archives</a>
-    <a href="/cia/contact/" class={`pill-item ${currentPath.includes("/contact") ? "active" : ""}`}>Senkaimon</a>
+    <a href="/" class={`pill-item ${currentPath === "/" || currentPath === "/index.html" ? "active" : ""}`}>Seireitei</a>
+    <a href="/members/" class={`pill-item ${currentPath.includes("/members") ? "active" : ""}`}>Shinigami</a>
+    <a href="/projects/" class={`pill-item ${currentPath.includes("/projects") ? "active" : ""}`}>Battles</a>
+    <a href="/about/" class={`pill-item ${currentPath.includes("/about") ? "active" : ""}`}>Soul Society</a>
+    <a href="/gallery/" class={`pill-item ${currentPath.includes("/gallery") ? "active" : ""}`}>Archives</a>
+    <a href="/contact/" class={`pill-item ${currentPath.includes("/contact") ? "active" : ""}`}>Senkaimon</a>
   </div>
   <a href="https://tinyurl.com/4t5t2vdu" target="_blank" class="nav-join">Enlist →</a>
 </nav>
@@ -58,11 +58,11 @@ const currentPath = Astro.url.pathname;
     <a href="https://ctftime.org/team/408973" target="_blank">CTFtime</a>
     <a href="https://www.facebook.com/profile.php?id=61583155799601" target="_blank">Facebook</a>
     <a href="https://tinyurl.com/4t5t2vdu" target="_blank">Enlist</a>
-    <a href="/cia/">Back to Top ↑</a>
+    <a href="/">Back to Top ↑</a>
   </div>
 </footer>
 
-<script is:inline src="/cia/assets/js/main.js"></script>
+<script is:inline src="/assets/js/main.js"></script>
 
 </body>
 </html>

@@ -4,7 +4,7 @@ rank: "#43"
 rank_class: "rank-silver"
 emoji: "🐿️"
 category: "international"
-image: "/cia/assets/images/achievements/squrill.webp"
+image: "/assets/images/achievements/squrill.webp"
 tags:
   - "3468 pts"
   - "12.322 rating"

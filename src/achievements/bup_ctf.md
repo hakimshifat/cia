@@ -4,7 +4,7 @@ rank: "#10"
 rank_class: "rank-silver"
 emoji: "🎯"
 category: "national"
-image: "/cia/assets/images/achievements/bup.webp"
+image: "/assets/images/achievements/bup.webp"
 tags:
   - "#10 finish"
   - "National run"

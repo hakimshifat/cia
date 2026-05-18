@@ -4,7 +4,7 @@ rank: "#14"
 rank_class: "rank-gold"
 emoji: "🎯"
 category: "international"
-image: "/cia/assets/images/achievements/umd.webp"
+image: "/assets/images/achievements/umd.webp"
 tags:
   - "2193 pts"
   - "49.949 rating"

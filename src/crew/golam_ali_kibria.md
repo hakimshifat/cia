@@ -3,7 +3,7 @@ name: "Golam Ali Kibria"
 handle: "@NetCracker"
 type: "member"
 order: 10
-image: "/cia/assets/images/members/Golam_Ali_Kibria.webp"
+image: "/assets/images/members/Golam_Ali_Kibria.webp"
 expertise:
   - "Networking"
   - "OSINT"
