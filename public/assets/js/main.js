@@ -133,17 +133,13 @@ revealEls.forEach(el=>revObserver.observe(el));
   goOffline();
 })();
 
-// ── DevTools Trap ──
+// ── DevTools Trap (desktop only) ──
 (function(){
+  // Skip on mobile/touch devices
+  if('ontouchstart' in window || navigator.maxTouchPoints>0 || window.innerWidth<1024) return;
   const rick='https://www.youtube.com/watch?v=-1oKO5NNSVI';
-  // Method 1: toString trap — fires when DevTools tries to log/inspect the object
+  // toString trap — fires when DevTools tries to log/inspect the object
   const trap=new Image();
   Object.defineProperty(trap,'id',{get:function(){window.location.replace(rick);}});
   setInterval(function(){console.log('%c',trap);},1000);
-  // Method 2: window size heuristic (catches docked DevTools)
-  setInterval(function(){
-    const w=window.outerWidth-window.innerWidth>160;
-    const h=window.outerHeight-window.innerHeight>160;
-    if(w||h)window.location.replace(rick);
-  },1500);
 })();
