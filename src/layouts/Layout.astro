@@ -4,6 +4,7 @@ import GlobalAnimatedBackground from '../components/GlobalAnimatedBackground.ast
 const { title } = Astro.props;
 const currentPath = Astro.url.pathname;
 const isResources = currentPath.includes('/resources');
+const isHome = currentPath === '/' || currentPath === '/index.html';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +12,58 @@ const isResources = currentPath.includes('/resources');
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>{title || "CIA - Cyber Invasion Army"}</title>
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
 <link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Oswald:wght@700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/css/style.css">
+{isHome && (
+  <meta name="description" content="Cyber Invasion Army is a BUP cybersecurity and Bangladesh CTF team sharing CTF writeups, competition results, cybersecurity projects, blogs, and ethical hacking resources." />
+  <meta name="keywords" content="cyberinvasionarmy, cyber invasion army, Cyber Invasion Army, BUP cybersecurity team, Bd ctf team, Bangladesh ctf team, Top ctf teams in BD, Top ctf teams in Bangladesh, Ctf writsup, Cybersecurity team bd, Best ctf teams in bd" />
+  <link rel="canonical" href="https://cyberinvasionarmy.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cyber Invasion Army | BUP Cybersecurity & Bangladesh CTF Team" />
+  <meta property="og:description" content="Cyber Invasion Army is a BUP cybersecurity and Bangladesh CTF team sharing CTF writeups, competition results, cybersecurity projects, blogs, and ethical hacking resources." />
+  <meta property="og:url" content="https://cyberinvasionarmy.com/" />
+  <meta property="og:site_name" content="Cyber Invasion Army" />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Cyber Invasion Army",
+    "alternateName": [
+      "cyberinvasionarmy",
+      "cyber invasion army",
+      "BUP cybersecurity team",
+      "Bd ctf team",
+      "Bangladesh ctf team",
+      "Cybersecurity team bd"
+    ],
+    "url": "https://cyberinvasionarmy.com/",
+    "description": "Cyber Invasion Army is a BUP cybersecurity and Bangladesh CTF team sharing CTF writeups, competition results, cybersecurity projects, blogs, and ethical hacking resources.",
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "BUP, Bangladesh"
+    },
+    "knowsAbout": [
+      "Cybersecurity",
+      "Capture The Flag",
+      "CTF Writeups",
+      "Ethical Hacking",
+      "Web Exploitation",
+      "Binary Exploitation",
+      "Digital Forensics",
+      "Reverse Engineering"
+    ],
+    "sameAs": [
+      "https://ctftime.org/team/408973"
+    ]
+  })} />
+)}
 { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
 </head>
 
