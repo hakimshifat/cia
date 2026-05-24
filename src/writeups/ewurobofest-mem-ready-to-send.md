@@ -3,6 +3,7 @@ title: "Mem_Ready to Send"
 description: "Memory forensics writeup for recovering a Base64 staged exfiltration payload hidden behind a SYSLOG marker."
 date: "2026-05-18"
 author: "Carnage"
+image: "/assets/images/writeups/ewurobofest-mem-ready-to-send/ewu.jpeg"
 tags:
   - "EWU National ROBOFEST"
   - "Memory Forensics"

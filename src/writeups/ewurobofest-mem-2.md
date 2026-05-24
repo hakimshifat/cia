@@ -3,6 +3,7 @@ title: "Mem 2"
 description: "Memory forensics writeup for decoding a single-byte XOR-obfuscated blob recovered from explorer.exe memory."
 date: "2026-05-18"
 author: "Carnage"
+image: "/assets/images/writeups/ewurobofest-mem-2/ewu.jpeg"
 tags:
   - "EWU National ROBOFEST"
   - "Memory Forensics"

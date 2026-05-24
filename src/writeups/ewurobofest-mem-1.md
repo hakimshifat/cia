@@ -3,6 +3,7 @@ title: "Mem 1"
 description: "Memory forensics writeup for recovering a flag hidden in a suspicious Sticky Notes command-line argument."
 date: "2026-05-18"
 author: "Carnage"
+image: "/assets/images/writeups/ewurobofest-mem-1/ewu.jpeg"
 tags:
   - "EWU National ROBOFEST"
   - "Memory Forensics"

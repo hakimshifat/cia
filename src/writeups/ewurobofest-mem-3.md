@@ -3,6 +3,7 @@ title: "Mem 3"
 description: "Memory forensics writeup for reassembling XOR-encoded CTXBLK fragments hidden in conhost.exe memory."
 date: "2026-05-18"
 author: "Carnage"
+image: "/assets/images/writeups/ewurobofest-mem-3/ewu.jpeg"
 tags:
   - "EWU National ROBOFEST"
   - "Memory Forensics"

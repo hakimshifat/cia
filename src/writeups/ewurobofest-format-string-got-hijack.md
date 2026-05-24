@@ -3,6 +3,7 @@ title: "Format String GOT Hijack"
 description: "Binary exploitation writeup for redirecting exit@GOT to win() with format-string halfword writes."
 date: "2026-05-18"
 author: "Carnage"
+image: "/assets/images/writeups/ewurobofest-format-string-got-hijack/ewu.jpeg"
 tags:
   - "EWU National ROBOFEST"
   - "Pwn"

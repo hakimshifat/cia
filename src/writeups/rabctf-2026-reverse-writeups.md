@@ -1,5 +1,5 @@
 ---
-title: "RABCTF 2025 Reverse Writeups"
+title: "RABCTF 2026 Reverse Writeups"
 description: "Writeups for the RABCTF 2025 reverse challenge category: Strings, Password Checker, and XOR Baby."
 date: "2026-04-23"
 author: "joyboy__"

@@ -3,6 +3,7 @@ title: "Mem_Ghost in the Drive"
 description: "Memory forensics writeup for recovering a previous DumpIt memory capture filename from Windows RAM."
 date: "2026-05-18"
 author: "Carnage"
+image: "/assets/images/writeups/ewurobofest-mem-ghost-in-the-drive/ewu.jpeg"
 tags:
   - "EWU National ROBOFEST"
   - "Memory Forensics"

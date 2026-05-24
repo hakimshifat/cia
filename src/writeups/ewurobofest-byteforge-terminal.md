@@ -2,7 +2,8 @@
 title: "Byteforge Terminal"
 description: "Web exploitation writeup chaining SQL injection, Jinja SSTI, and a SUID helper to read the flag."
 date: "2026-05-18"
-author: "Carnage"
+author: "Carnage_"
+image: "/assets/images/writeups/ewurobofest-byteforge-terminal/ewu.jpeg"
 tags:
   - "EWU National ROBOFEST"
   - "Web"

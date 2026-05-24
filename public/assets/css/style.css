@@ -1318,6 +1318,17 @@
     background: none;
   }
 
+  .resource-prose img {
+    display: block;
+    width: 100%;
+    max-width: 860px;
+    height: auto;
+    margin: 24px auto;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    object-fit: contain;
+  }
+
   .resource-prose .blog-hero {
     margin-bottom: 42px;
     padding: 36px 0 12px;
