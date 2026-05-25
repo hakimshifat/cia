@@ -1630,6 +1630,54 @@
     border: 1px solid rgba(234, 88, 12, .15)
   }
 
+  .rank-collab {
+    background: rgba(6, 182, 212, 0.12);
+    color: #22d3ee;
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    text-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+  }
+
+  .collab-logos-container {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .collab-text {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  .collab-logos {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .collab-logo-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .collab-logo-img:hover {
+    transform: scale(1.2) translateY(-2px);
+    border-color: #22d3ee;
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+  }
+
   /* ── Members ── */
   #members {
     background: transparent

@@ -183,7 +183,7 @@ HAAT{decompiler_confidence_issue}
 ```
 
 from IDA Decompilation
-```C
+```c
 __int64 __fastcall main(int a1, char **a2, char **a3)
 {
   __int64 *v3; // rsi
@@ -238,7 +238,7 @@ LABEL_5:
 ```
 
 Cleaning up the code 
-```C
+```c
 __int64 __fastcall main(int a1, char **a2, char **a3)
 {
   puts("xor_salami_returns");

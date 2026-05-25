@@ -48,6 +48,16 @@ const national = all.filter(p => p.frontmatter.category === 'national').sort((a,
                 <span class="project-tag">{tag}</span>
               ))}
             </div>
+            {proj.frontmatter.collab_logos && (
+              <div class="collab-logos-container">
+                <span class="collab-text">Partnered with:</span>
+                <div class="collab-logos">
+                  {proj.frontmatter.collab_logos.map(logo => (
+                    <img src={logo} alt="Collaborator Logo" class="collab-logo-img" />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       ))}
@@ -84,6 +94,16 @@ const national = all.filter(p => p.frontmatter.category === 'national').sort((a,
                 <span class="project-tag">{tag}</span>
               ))}
             </div>
+            {proj.frontmatter.collab_logos && (
+              <div class="collab-logos-container">
+                <span class="collab-text">Partnered with:</span>
+                <div class="collab-logos">
+                  {proj.frontmatter.collab_logos.map(logo => (
+                    <img src={logo} alt="Collaborator Logo" class="collab-logo-img" />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       ))}
