@@ -2,7 +2,7 @@
 title: "Salami CTF 2026"
 rank: "Collab"
 rank_class: "rank-collab"
-emoji: "🤝"
+emoji: " "
 category: "national"
 image: "/assets/images/achievements/salami.webp"
 collab_logos:
@@ -10,7 +10,7 @@ collab_logos:
   - "/assets/images/achievements/rab.webp"
 tags:
   - "Co-Host"
-  - "DU IIT Collab"
-  - "BUP RAB Collab"
+  - "DU IIT"
+  - "BUP RAB"
 ---
 Collaborated with DU IIT and BUP RAB to co-host Salami CTF 2026, building and running a highly successful CTF.

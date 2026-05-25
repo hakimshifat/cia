@@ -1,6 +1,7 @@
 ---
 import { pwaInfo } from 'virtual:pwa-info';
 import GlobalAnimatedBackground from '../components/GlobalAnimatedBackground.astro';
+import '../../public/assets/css/style.css';
 const { title } = Astro.props;
 const currentPath = Astro.url.pathname;
 const isResources = currentPath.includes('/resources');
@@ -21,7 +22,6 @@ const isHome = currentPath === '/' || currentPath === '/index.html';
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Oswald:wght@700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/css/style.css">
 {isHome && (
   <meta name="description" content="Cyber Invasion Army is a BUP cybersecurity and Bangladesh CTF team sharing CTF writeups, competition results, cybersecurity projects, blogs, and ethical hacking resources." />
   <meta name="keywords" content="cyberinvasionarmy, cyber invasion army, Cyber Invasion Army, BUP cybersecurity team, Bd ctf team, Bangladesh ctf team, Top ctf teams in BD, Top ctf teams in Bangladesh, Ctf writsup, Cybersecurity team bd, Best ctf teams in bd" />
