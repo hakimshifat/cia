@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CompetitionGrid from '../../components/CompetitionGrid.astro';
+import { getCompetitionsByCategory } from '../../lib/competitions.js';
+
+const competitions = getCompetitionsByCategory('international');
+---
+<Layout title="International Competitions - CIA">
+<section id="competitions-international" class="section-pad">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Competitions</div>
+    <h2 class="section-title">International <span>Battles</span></h2>
+    <p class="section-desc">Worldwide CTFs, rating events, and international leaderboard finishes.</p>
+  </div>
+  <div class="battle-subsection reveal">
+    <div class="battle-subsection-header">
+      <h3 class="battle-subsection-title">International Battles</h3>
+      <span class="battle-subsection-tag">{competitions.length} Operations</span>
+    </div>
+    <CompetitionGrid competitions={competitions} />
+  </div>
+</section>
+</Layout>

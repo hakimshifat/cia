@@ -1,0 +1,43 @@
+---
+import { getPosition } from '../lib/competitions.js';
+
+const { competitions = [] } = Astro.props;
+---
+<div class="projects-grid">
+  {competitions.map(proj => (
+    <div class="project-card reveal">
+      <span class={`project-rank ${proj.frontmatter.rank_class}`}>{proj.frontmatter.rank}</span>
+      <div class="project-card-image">
+        {getPosition(proj.frontmatter.rank) !== 999 && (
+          <span class="project-bg-number">
+            {getPosition(proj.frontmatter.rank) < 10 ? `0${getPosition(proj.frontmatter.rank)}` : getPosition(proj.frontmatter.rank)}
+          </span>
+        )}
+        {proj.frontmatter.image ? (
+          <img src={proj.frontmatter.image} alt={proj.frontmatter.title} loading="lazy" />
+        ) : (
+          <span class="project-emoji-placeholder">{proj.frontmatter.emoji}</span>
+        )}
+      </div>
+      <div class="project-card-body">
+        <h3 class="project-title">{proj.frontmatter.title}</h3>
+        <p class="project-desc"><proj.Content /></p>
+        <div class="project-tags">
+          {proj.frontmatter.tags && proj.frontmatter.tags.map(tag => (
+            <span class="project-tag">{tag}</span>
+          ))}
+        </div>
+        {proj.frontmatter.collab_logos && (
+          <div class="collab-logos-container">
+            <span class="collab-text">Partnered with:</span>
+            <div class="collab-logos">
+              {proj.frontmatter.collab_logos.map(logo => (
+                <img src={logo} alt="Collaborator Logo" class="collab-logo-img" />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  ))}
+</div>

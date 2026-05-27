@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCompetitionsByCategory } from '../../lib/competitions.js';
+
+const sections = [
+  {
+    title: 'National',
+    href: '/competitions/national/',
+    eyebrow: 'Domestic Battles',
+    description: 'Bangladesh-based CTF runs, university contests, and national stage placements.',
+    count: getCompetitionsByCategory('national').length
+  },
+  {
+    title: 'International',
+    href: '/competitions/international/',
+    eyebrow: 'Global Operations',
+    description: 'Worldwide CTFs, rating events, and international leaderboard finishes.',
+    count: getCompetitionsByCategory('international').length
+  },
+  {
+    title: 'Organized',
+    href: '/competitions/organized/',
+    eyebrow: 'Hosted Events',
+    description: 'CTFs and security events organized, co-hosted, or operated by the team.',
+    count: getCompetitionsByCategory('organized').length
+  }
+];
+---
+<Layout title="Competitions - CIA">
+<section id="competitions" class="section-pad">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Competitions</div>
+    <h2 class="section-title">Hollow <span>Purification Log</span></h2>
+    <p class="section-desc">Every competition we entered, every event we organized, every flag we captured — recorded by segment.</p>
+  </div>
+  <div class="resource-grid resource-grid-three">
+    {sections.map((section, index) => (
+      <a class={`resource-card reveal reveal-delay-${index + 1}`} href={section.href}>
+        <span class="resource-card-eyebrow">{section.eyebrow}</span>
+        <h3>{section.title}</h3>
+        <p>{section.description}</p>
+        <div class="resource-meta">
+          <span>{section.count} Operations</span>
+        </div>
+        <span class="resource-card-link">View Segment</span>
+      </a>
+    ))}
+  </div>
+</section>
+</Layout>

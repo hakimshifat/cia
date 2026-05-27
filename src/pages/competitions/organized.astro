@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CompetitionGrid from '../../components/CompetitionGrid.astro';
+import { getCompetitionsByCategory } from '../../lib/competitions.js';
+
+const competitions = getCompetitionsByCategory('organized');
+---
+<Layout title="Organized Competitions - CIA">
+<section id="competitions-organized" class="section-pad">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Competitions</div>
+    <h2 class="section-title">Organized <span>Events</span></h2>
+    <p class="section-desc">CTFs and security events organized, co-hosted, or operated by the team.</p>
+  </div>
+  <div class="battle-subsection reveal">
+    <div class="battle-subsection-header">
+      <h3 class="battle-subsection-title">Organized Events</h3>
+      <span class="battle-subsection-tag">{competitions.length} Operations</span>
+    </div>
+    <CompetitionGrid competitions={competitions} />
+  </div>
+</section>
+</Layout>

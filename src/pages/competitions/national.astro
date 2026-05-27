@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CompetitionGrid from '../../components/CompetitionGrid.astro';
+import { getCompetitionsByCategory } from '../../lib/competitions.js';
+
+const competitions = getCompetitionsByCategory('national');
+---
+<Layout title="National Competitions - CIA">
+<section id="competitions-national" class="section-pad">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Competitions</div>
+    <h2 class="section-title">National <span>Battles</span></h2>
+    <p class="section-desc">Bangladesh-based CTF runs, university contests, and national stage placements.</p>
+  </div>
+  <div class="battle-subsection reveal">
+    <div class="battle-subsection-header">
+      <h3 class="battle-subsection-title">National Battles</h3>
+      <span class="battle-subsection-tag">{competitions.length} Operations</span>
+    </div>
+    <CompetitionGrid competitions={competitions} />
+  </div>
+</section>
+</Layout>

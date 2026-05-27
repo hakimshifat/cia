@@ -4,6 +4,7 @@ import GlobalAnimatedBackground from '../components/GlobalAnimatedBackground.ast
 import '../../public/assets/css/style.css';
 const { title } = Astro.props;
 const currentPath = Astro.url.pathname;
+const isCompetitions = currentPath.includes('/competitions');
 const isResources = currentPath.includes('/resources');
 const isHome = currentPath === '/' || currentPath === '/index.html';
 ---
@@ -16,9 +17,8 @@ const isHome = currentPath === '/' || currentPath === '/index.html';
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Oswald:wght@700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -91,7 +91,14 @@ const isHome = currentPath === '/' || currentPath === '/index.html';
     <div class="pill-nav">
     <a href="/" class={`pill-item ${currentPath === "/" || currentPath === "/index.html" ? "active" : ""}`}>Home</a>
     <a href="/members/" class={`pill-item ${currentPath.includes("/members") ? "active" : ""}`}>Shinigami</a>
-    <a href="/competitions/" class={`pill-item ${currentPath.includes("/competitions") ? "active" : ""}`}>Competitions</a>
+    <div class={`pill-dropdown ${isCompetitions ? "active" : ""}`}>
+      <a href="/competitions/" class={`pill-item pill-dropdown-trigger ${isCompetitions ? "active" : ""}`} aria-haspopup="true" aria-expanded="false">Competitions</a>
+      <div class="pill-dropdown-menu">
+        <a href="/competitions/national/">National</a>
+        <a href="/competitions/international/">International</a>
+        <a href="/competitions/organized/">Organized</a>
+      </div>
+    </div>
     <div class={`pill-dropdown ${isResources ? "active" : ""}`}>
       <a href="/resources/" class={`pill-item pill-dropdown-trigger ${isResources ? "active" : ""}`} aria-haspopup="true" aria-expanded="false">Resources</a>
       <div class="pill-dropdown-menu">
@@ -115,7 +122,14 @@ const isHome = currentPath === '/' || currentPath === '/index.html';
   <div class="mobile-menu-inner">
     <a href="/" class={`mobile-menu-link ${currentPath === "/" || currentPath === "/index.html" ? "active" : ""}`}>Home</a>
     <a href="/members/" class={`mobile-menu-link ${currentPath.includes("/members") ? "active" : ""}`}>Shinigami</a>
-    <a href="/competitions/" class={`mobile-menu-link ${currentPath.includes("/competitions") ? "active" : ""}`}>Competitions</a>
+    <div class="mobile-menu-group">
+      <a href="/competitions/" class={`mobile-menu-link ${isCompetitions ? "active" : ""}`}>Competitions</a>
+      <div class="mobile-submenu">
+        <a href="/competitions/national/">National</a>
+        <a href="/competitions/international/">International</a>
+        <a href="/competitions/organized/">Organized</a>
+      </div>
+    </div>
     <div class="mobile-menu-group">
       <a href="/resources/" class={`mobile-menu-link ${isResources ? "active" : ""}`}>Resources</a>
       <div class="mobile-submenu">

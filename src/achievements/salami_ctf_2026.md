@@ -3,7 +3,7 @@ title: "Salami CTF 2026"
 rank: "Collab"
 rank_class: "rank-collab"
 emoji: " "
-category: "national"
+category: "organized"
 image: "/assets/images/achievements/salami.webp"
 collab_logos:
   - "/assets/images/achievements/iitctflogo_v2.webp"
