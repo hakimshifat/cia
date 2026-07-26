@@ -1,7 +1,7 @@
 ---
 name: "Abdul Hakim Shifat"
 handle: "@joyboy__"
-type: "founder"
+type: "member"
 order: 3
 image: "/assets/images/members/shifat.webp"
 expertise:
