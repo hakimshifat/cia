@@ -22,9 +22,9 @@ const advisors = crew.filter(m => m.frontmatter.type === 'advisor').sort((a, b) 
         <span class="member-group-tag">{founders.length} Captains</span>
       </div>
       <div class="members-grid">
-        {founders.map(member => (
-          <div class="member-card">
-            <img class="founder-photo" src={member.frontmatter.image} alt={member.frontmatter.name}/>
+        {founders.map((member, index) => (
+          <div class="member-card member-card-captain">
+            <img class="founder-photo" src={member.frontmatter.image} alt={member.frontmatter.name} width="400" height="500" loading={index === 0 ? "eager" : "lazy"} decoding="async"/>
             <div class="member-name">{member.frontmatter.name}</div>
             <div class="member-handle">{member.frontmatter.handle}</div>
             <span class="member-role role-founder">Captain</span>
@@ -54,7 +54,7 @@ const advisors = crew.filter(m => m.frontmatter.type === 'advisor').sort((a, b) 
       <div class="members-grid">
         {members.map(member => (
           <div class="member-card">
-            <img class="founder-photo" src={member.frontmatter.image} alt={member.frontmatter.name}/>
+            <img class="founder-photo" src={member.frontmatter.image} alt={member.frontmatter.name} width="400" height="500" loading="lazy" decoding="async"/>
             <div class="member-name">{member.frontmatter.name}</div>
             <div class="member-handle">{member.frontmatter.handle}</div>
             <div class="founder-expertise">
@@ -80,7 +80,7 @@ const advisors = crew.filter(m => m.frontmatter.type === 'advisor').sort((a, b) 
   <div class="advisor-watermark">Advisor</div>
   <div class="advisor-inner">
     <div class="advisor-photo-side reveal">
-      <img src={adv.frontmatter.image} alt={adv.frontmatter.name}/>
+      <img src={adv.frontmatter.image} alt={adv.frontmatter.name} loading="lazy" decoding="async"/>
     </div>
     <div class="advisor-text-side reveal reveal-delay-1">
       <div class="advisor-label">Advisor</div>

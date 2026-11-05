@@ -1,18 +1,23 @@
 ---
 import { pwaInfo } from 'virtual:pwa-info';
 import GlobalAnimatedBackground from '../components/GlobalAnimatedBackground.astro';
-import '../../public/assets/css/style.css';
 const { title } = Astro.props;
 const currentPath = Astro.url.pathname;
 const isCompetitions = currentPath.includes('/competitions');
 const isResources = currentPath.includes('/resources');
 const isHome = currentPath === '/' || currentPath === '/index.html';
+const navCurrent = (href) => {
+  const path = isHome ? '/' : `${currentPath.replace(/\/$/, '')}/`;
+  if (path === href) return 'page';
+  return href !== '/' && path.startsWith(href) ? 'location' : undefined;
+};
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="stylesheet" href="/assets/css/style.css" />
 <title>{title || "CIA - Cyber Invasion Army"}</title>
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
@@ -21,7 +26,7 @@ const isHome = currentPath === '/' || currentPath === '/index.html';
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Oswald:wght@700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 {isHome && (
   <meta name="description" content="Cyber Invasion Army is a BUP cybersecurity and Bangladesh CTF team sharing CTF writeups, competition results, cybersecurity projects, blogs, and ethical hacking resources." />
   <meta name="keywords" content="cyberinvasionarmy, cyber invasion army, Cyber Invasion Army, BUP cybersecurity team, Bd ctf team, Bangladesh ctf team, Top ctf teams in BD, Top ctf teams in Bangladesh, Ctf writsup, Cybersecurity team bd, Best ctf teams in bd" />
@@ -77,70 +82,62 @@ const isHome = currentPath === '/' || currentPath === '/index.html';
 <!-- ── Noise ── -->
 <div id="noise"></div>
 
-<!-- ── Loading Screen ── -->
-<div id="loading">
-  <script>if(sessionStorage.getItem('cia_visited')){document.getElementById('loading').style.display='none';}</script>
-  <div class="loading-initials">CIA</div>
-  <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
-  <div class="loading-label">Initializing Cyber Invasion</div>
-</div>
-
 <!-- ── Navbar ── -->
 <nav id="navbar">
-  <a href="/" class="nav-logo"><img src="/assets/images/other/cia-logo-transparent.webp" alt="CIA" class="nav-logo-img"/></a>
+  <a href="/" aria-current={navCurrent('/')} class="nav-logo"><img src="/assets/images/other/cia-logo-transparent.webp" alt="CIA" class="nav-logo-img"/></a>
     <div class="pill-nav">
-    <a href="/" class={`pill-item ${currentPath === "/" || currentPath === "/index.html" ? "active" : ""}`}>Home</a>
-    <a href="/members/" class={`pill-item ${currentPath.includes("/members") ? "active" : ""}`}>Shinigami</a>
+    <a href="/" aria-current={navCurrent('/')} class={`pill-item ${currentPath === "/" || currentPath === "/index.html" ? "active" : ""}`}>Home</a>
+    <a href="/members/" aria-current={navCurrent('/members/')} class={`pill-item ${currentPath.includes("/members") ? "active" : ""}`}>Members · Shinigami</a>
     <div class={`pill-dropdown ${isCompetitions ? "active" : ""}`}>
-      <a href="/competitions/" class={`pill-item pill-dropdown-trigger ${isCompetitions ? "active" : ""}`} aria-haspopup="true" aria-expanded="false">Competitions</a>
+      <a href="/competitions/" aria-current={navCurrent('/competitions/')} class={`pill-item pill-dropdown-trigger ${isCompetitions ? "active" : ""}`}>Competitions</a>
       <div class="pill-dropdown-menu">
-        <a href="/competitions/national/">National</a>
-        <a href="/competitions/international/">International</a>
-        <a href="/competitions/organized/">Organized</a>
+        <a href="/competitions/national/" aria-current={navCurrent('/competitions/national/')}>National</a>
+        <a href="/competitions/international/" aria-current={navCurrent('/competitions/international/')}>International</a>
+        <a href="/competitions/organized/" aria-current={navCurrent('/competitions/organized/')}>Organized</a>
       </div>
     </div>
     <div class={`pill-dropdown ${isResources ? "active" : ""}`}>
-      <a href="/resources/" class={`pill-item pill-dropdown-trigger ${isResources ? "active" : ""}`} aria-haspopup="true" aria-expanded="false">Resources</a>
+      <a href="/resources/" aria-current={navCurrent('/resources/')} class={`pill-item pill-dropdown-trigger ${isResources ? "active" : ""}`}>Resources</a>
       <div class="pill-dropdown-menu">
-        <a href="/resources/writeups/">Writeups</a>
-        <a href="/resources/projects/">Projects</a>
-        <a href="/resources/blogs/">Blogs</a>
+        <a href="/resources/writeups/" aria-current={navCurrent('/resources/writeups/')}>Writeups</a>
+        <a href="/resources/projects/" aria-current={navCurrent('/resources/projects/')}>Projects</a>
+        <a href="/resources/blogs/" aria-current={navCurrent('/resources/blogs/')}>Blogs</a>
       </div>
     </div>
-    <a href="/about/" class={`pill-item ${currentPath.includes("/about") ? "active" : ""}`}>Soul Society</a>
-    <a href="/gallery/" class={`pill-item ${currentPath.includes("/gallery") ? "active" : ""}`}>Archives</a>
-    <a href="/contact/" class={`pill-item ${currentPath.includes("/contact") ? "active" : ""}`}>Contact</a>
+    <a href="/about/" aria-current={navCurrent('/about/')} class={`pill-item ${currentPath.includes("/about") ? "active" : ""}`}>About · Soul Society</a>
+    <a href="/gallery/" aria-current={navCurrent('/gallery/')} class={`pill-item ${currentPath.includes("/gallery") ? "active" : ""}`}>Gallery · Archives</a>
+    <a href="/contact/" aria-current={navCurrent('/contact/')} class={`pill-item ${currentPath.includes("/contact") ? "active" : ""}`}>Contact</a>
   </div>
   <a href="https://tinyurl.com/4t5t2vdu" target="_blank" class="nav-join">Enlist →</a>
-  <button class="hamburger" id="hamburger" aria-label="Open menu">
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- ── Mobile Menu Overlay ── -->
-<div class="mobile-menu" id="mobile-menu">
+<div class="mobile-menu" id="mobile-menu" inert aria-hidden="true">
   <div class="mobile-menu-inner">
-    <a href="/" class={`mobile-menu-link ${currentPath === "/" || currentPath === "/index.html" ? "active" : ""}`}>Home</a>
-    <a href="/members/" class={`mobile-menu-link ${currentPath.includes("/members") ? "active" : ""}`}>Shinigami</a>
+    <a href="/" aria-current={navCurrent('/')} class={`mobile-menu-link ${currentPath === "/" || currentPath === "/index.html" ? "active" : ""}`}>Home</a>
+    <a href="/members/" aria-current={navCurrent('/members/')} class={`mobile-menu-link ${currentPath.includes("/members") ? "active" : ""}`}>Members · Shinigami</a>
     <div class="mobile-menu-group">
-      <a href="/competitions/" class={`mobile-menu-link ${isCompetitions ? "active" : ""}`}>Competitions</a>
+      <a href="/competitions/" aria-current={navCurrent('/competitions/')} class={`mobile-menu-link ${isCompetitions ? "active" : ""}`}>Competitions</a>
       <div class="mobile-submenu">
-        <a href="/competitions/national/">National</a>
-        <a href="/competitions/international/">International</a>
-        <a href="/competitions/organized/">Organized</a>
+        <a href="/competitions/national/" aria-current={navCurrent('/competitions/national/')}>National</a>
+        <a href="/competitions/international/" aria-current={navCurrent('/competitions/international/')}>International</a>
+        <a href="/competitions/organized/" aria-current={navCurrent('/competitions/organized/')}>Organized</a>
       </div>
     </div>
     <div class="mobile-menu-group">
-      <a href="/resources/" class={`mobile-menu-link ${isResources ? "active" : ""}`}>Resources</a>
+      <a href="/resources/" aria-current={navCurrent('/resources/')} class={`mobile-menu-link ${isResources ? "active" : ""}`}>Resources</a>
       <div class="mobile-submenu">
-        <a href="/resources/writeups/">Writeups</a>
-        <a href="/resources/projects/">Projects</a>
-        <a href="/resources/blogs/">Blogs</a>
+        <a href="/resources/writeups/" aria-current={navCurrent('/resources/writeups/')}>Writeups</a>
+        <a href="/resources/projects/" aria-current={navCurrent('/resources/projects/')}>Projects</a>
+        <a href="/resources/blogs/" aria-current={navCurrent('/resources/blogs/')}>Blogs</a>
       </div>
     </div>
-    <a href="/about/" class={`mobile-menu-link ${currentPath.includes("/about") ? "active" : ""}`}>Soul Society</a>
-    <a href="/gallery/" class={`mobile-menu-link ${currentPath.includes("/gallery") ? "active" : ""}`}>Archives</a>
-    <a href="/contact/" class={`mobile-menu-link ${currentPath.includes("/contact") ? "active" : ""}`}>Contact</a>
+    <a href="/about/" aria-current={navCurrent('/about/')} class={`mobile-menu-link ${currentPath.includes("/about") ? "active" : ""}`}>About · Soul Society</a>
+    <a href="/gallery/" aria-current={navCurrent('/gallery/')} class={`mobile-menu-link ${currentPath.includes("/gallery") ? "active" : ""}`}>Gallery · Archives</a>
+    <a href="/contact/" aria-current={navCurrent('/contact/')} class={`mobile-menu-link ${currentPath.includes("/contact") ? "active" : ""}`}>Contact</a>
     <a href="https://tinyurl.com/4t5t2vdu" target="_blank" class="mobile-menu-cta">Enlist →</a>
   </div>
 </div>

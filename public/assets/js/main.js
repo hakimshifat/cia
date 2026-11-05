@@ -1,31 +1,37 @@
-// ── Loading Screen ──
-window.addEventListener('load',()=>{
-  if(!sessionStorage.getItem('cia_visited')){
-    setTimeout(()=>{
-      document.getElementById('loading').classList.add('hide');
-      sessionStorage.setItem('cia_visited','1');
-    },800);
-  }
-});
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-// ── Hamburger Menu Toggle ──
+// Keep menu state, focus, and background interaction in sync.
 (function(){
-  const btn=document.getElementById('hamburger');
-  const menu=document.getElementById('mobile-menu');
-  if(!btn||!menu)return;
-
-  btn.addEventListener('click',()=>{
-    const open=menu.classList.toggle('open');
-    btn.classList.toggle('active');
-    document.body.classList.toggle('menu-open',open);
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+  const background = document.querySelectorAll('main, footer, .pill-nav, .nav-join, .nav-logo');
+  function setOpen(open, restoreFocus = true) {
+    menu.classList.toggle('open', open);
+    menu.inert = !open;
+    menu.setAttribute('aria-hidden', String(!open));
+    btn.classList.toggle('active', open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('menu-open', open);
+    background.forEach(el => { el.inert = open; });
+    if (open) menu.querySelector('a')?.focus();
+    else if (restoreFocus) btn.focus();
+  }
+  btn.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', e => {
+    if (!menu.classList.contains('open')) return;
+    if (e.key === 'Escape') { e.preventDefault(); setOpen(false); }
+    if (e.key === 'Tab') {
+      const controls = [btn, ...menu.querySelectorAll('a[href]')];
+      const index = controls.indexOf(document.activeElement);
+      e.preventDefault();
+      controls[(index + (e.shiftKey ? -1 : 1) + controls.length) % controls.length].focus();
+    }
   });
-
-  menu.querySelectorAll('a').forEach(link=>{
-    link.addEventListener('click',()=>{
-      menu.classList.remove('open');
-      btn.classList.remove('active');
-      document.body.classList.remove('menu-open');
-    });
+  window.matchMedia('(min-width: 1101px)').addEventListener('change', e => {
+    if (e.matches && menu.classList.contains('open')) setOpen(false, false);
   });
 })();
 
@@ -33,6 +39,7 @@ window.addEventListener('load',()=>{
 const card=document.getElementById('stats-card');
 if(card){
   card.addEventListener('mousemove',e=>{
+    if (motionPreference.matches) return;
     const r=card.getBoundingClientRect();
     const cx=r.left+r.width/2,cy=r.top+r.height/2;
     const rx2=-(e.clientY-cy)/r.height*12;
@@ -40,96 +47,100 @@ if(card){
     card.style.transform=`rotateX(${rx2}deg) rotateY(${ry2}deg)`;
   });
   card.addEventListener('mouseleave',()=>{card.style.transform='none'});
+  motionPreference.addEventListener('change', () => { card.style.transform = 'none'; });
 }
 
-// ── IntersectionObserver — reveals ──
-const revealEls=document.querySelectorAll('.reveal');
-const revObserver=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revObserver.unobserve(e.target)}});
-},{threshold: 0, rootMargin: '0px 0px -50px 0px'});
-revealEls.forEach(el=>revObserver.observe(el));
+// Make horizontally scrolling examples usable from the keyboard.
+document.querySelectorAll('.resource-prose pre').forEach((block, index) => {
+  block.tabIndex = 0;
+  block.setAttribute('role', 'region');
+  block.setAttribute('aria-label', `Code example ${index + 1}`);
+});
 
-// ── CTFtime Live Stats ──
+// Cached values appear immediately; refreshes only animate changed numbers.
 (async function(){
-  const TEAM=408973;
-  const YEAR=new Date().getFullYear();
-  const CACHE=`cia_ctf_${YEAR}`;
-  const TTL=6*3600*1000; // refresh every 6h
+  if (!document.getElementById('stats-card')) return;
+  const TEAM = 408973;
+  const YEAR = new Date().getFullYear();
+  const CACHE = `cia_ctf_${YEAR}`;
+  const TTL = 6 * 3600 * 1000;
+  const label = document.querySelector('.live-text');
+  const updated = document.getElementById('stats-updated');
+  let cached = null;
 
-  function animNum(el,target,pre,suf){
-    if(!el)return;
-    const dur=1800,t0=performance.now();
-    const step=now=>{
-      const p=Math.min((now-t0)/dur,1);
-      const e=1-Math.pow(1-p,3);
-      el.textContent=pre+Math.floor(target*e)+suf;
-      if(p<1)requestAnimationFrame(step);
-    };
+  function setNumber(id, target, prefix = '', suffix = '', animate = false) {
+    const el = document.getElementById(id);
+    if (!el || !Number.isFinite(target)) return;
+    const start = Number(el.textContent.replace(/[^0-9.-]/g, ''));
+    const render = value => { el.textContent = prefix + value + suffix; };
+    if (!animate || motionPreference.matches || !Number.isFinite(start) || start === target) {
+      render(target);
+      return;
+    }
+    const began = performance.now();
+    function step(now) {
+      const progress = motionPreference.matches ? 1 : Math.min((now - began) / 400, 1);
+      render(Math.round(start + (target - start) * (1 - Math.pow(1 - progress, 3))));
+      if (progress < 1) requestAnimationFrame(step);
+    }
     requestAnimationFrame(step);
   }
 
-  function apply(data,fromCache){
-    const yr=data.rating&&(data.rating[YEAR]||data.rating[YEAR-1])||{};
-    const pts  = yr.rating_points!=null ? Math.floor(yr.rating_points) : null;
-    const rank = yr.rating_place   || null;
-    const ctfs = yr.ctfs_count     || null;
-    const mem  = Array.isArray(data.members) ? data.members.length : null;
-    const year = yr.rating_points!=null ? YEAR : YEAR-1;
-
-    if(pts  !=null){animNum(document.getElementById('stat-pts'),pts,'','');
-      const lbl=document.getElementById('stat-pts-label');
-      if(lbl)lbl.textContent=year+' Pts';}
-    if(rank !=null){animNum(document.getElementById('stat-global'),rank,'#','');
-      const lbl=document.getElementById('stat-global-label');
-      if(lbl)lbl.textContent='Global '+year;}
-    if(ctfs !=null) animNum(document.getElementById('stat-ctfs'),ctfs,'','+');
-    if(mem  !=null) animNum(document.getElementById('stat-members'),mem,'','');
-
-    const upd=document.getElementById('stats-updated');
-    if(upd){
-      const d=new Date();
-      upd.textContent='· '+d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+  function apply(data, animate = false) {
+    const year = data.rating?.[YEAR] ? YEAR : YEAR - 1;
+    const rating = data.rating?.[year] || {};
+    if (rating.rating_points != null) setNumber('stat-pts', Math.floor(rating.rating_points), '', '', animate);
+    if (rating.rating_place != null) setNumber('stat-global', Number(rating.rating_place), '#', '', animate);
+    if (rating.ctfs_count != null) setNumber('stat-ctfs', Number(rating.ctfs_count), '', '+', animate);
+    if (Array.isArray(data.members)) setNumber('stat-members', data.members.length, '', '', animate);
+    if (rating.rating_points != null) {
+      document.getElementById('stat-pts-label').textContent = year + ' Pts';
+      document.getElementById('stat-global-label').textContent = 'Global ' + year;
     }
   }
 
-  function goOffline(){
-    const dot=document.querySelector('.live-dot');
-    if(dot){dot.classList.add('offline');dot.title='Could not reach CTFtime';}
-    const upd=document.getElementById('stats-updated');
-    if(upd)upd.textContent='· cached data';
+  function setStatus(text, timestamp) {
+    if (label) label.textContent = text + ' · CTFtime';
+    if (updated) updated.textContent = timestamp
+      ? '· ' + new Date(timestamp).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+      : '· last published values';
   }
 
-  // Cache hit?
-  try{
-    const c=JSON.parse(localStorage.getItem(CACHE)||'null');
-    if(c&&Date.now()-c.ts<TTL){apply(c.d,true);return;}
-  }catch(e){}
-
-  // Fetch with timeout
-  async function get(url){
-    const ctrl=new AbortController();
-    const id=setTimeout(()=>ctrl.abort(),7000);
-    const r=await fetch(url,{signal:ctrl.signal});
-    clearTimeout(id);
-    return r;
+  try {
+    const value = JSON.parse(localStorage.getItem(CACHE) || 'null');
+    if (value?.d && Number.isFinite(value.ts)) cached = value;
+  } catch {}
+  if (cached) {
+    apply(cached.d);
+    setStatus('CACHED', cached.ts);
+    if (Date.now() - cached.ts < TTL) return;
   }
+  setStatus('UPDATING', cached?.ts);
 
-  const api=`https://ctftime.org/api/v1/teams/${TEAM}/`;
-  const proxies=[
+  const api = `https://ctftime.org/api/v1/teams/${TEAM}/`;
+  const proxies = [
     `https://api.allorigins.win/raw?url=${encodeURIComponent(api)}`,
-    `https://corsproxy.io/?${encodeURIComponent(api)}`,
+    `https://corsproxy.io/?${encodeURIComponent(api)}`
   ];
-
-  for(const p of proxies){
-    try{
-      const res=await get(p);
-      if(!res.ok)continue;
-      const data=await res.json();
-      localStorage.setItem(CACHE,JSON.stringify({d:data,ts:Date.now()}));
-      apply(data,false);
+  for (const url of proxies) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 7000);
+    try {
+      const response = await fetch(url, { signal: controller.signal });
+      if (!response.ok) continue;
+      const data = await response.json();
+      if (!data || typeof data !== 'object' || (!data.rating && !Array.isArray(data.members))) continue;
+      const timestamp = Date.now();
+      apply(data, true);
+      setStatus('LIVE', timestamp);
+      try { localStorage.setItem(CACHE, JSON.stringify({ d: data, ts: timestamp })); } catch {}
       return;
-    }catch(e){continue;}
+    } catch {
+      // Continue to the fallback source while keeping existing values visible.
+    } finally {
+      clearTimeout(timeout);
+    }
   }
-  goOffline();
+  document.querySelector('.live-dot')?.classList.add('offline');
+  setStatus(cached ? 'CACHED' : 'OFFLINE', cached?.ts);
 })();
-

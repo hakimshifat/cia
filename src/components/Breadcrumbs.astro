@@ -1,0 +1,21 @@
+---
+const { title } = Astro.props;
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const labels = { resources: 'Resources', writeups: 'Writeups', projects: 'Projects', blogs: 'Blogs' };
+const items = segments.map((segment, index) => ({
+  href: `/${segments.slice(0, index + 1).join('/')}/`,
+  label: index === segments.length - 1 && title ? title : labels[segment] || segment
+}));
+---
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    {items.map((item, index) => (
+      <li>
+        {index === items.length - 1
+          ? <span aria-current="page">{item.label}</span>
+          : <a href={item.href}>{item.label}</a>}
+      </li>
+    ))}
+  </ol>
+</nav>

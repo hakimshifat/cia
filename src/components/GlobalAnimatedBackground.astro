@@ -112,9 +112,14 @@
 </style>
 
 <script is:inline>
-  // Pause video for users who prefer reduced motion
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const vid = document.querySelector('.global-bg__video');
-    if (vid) vid.pause();
+  // Apply motion preferences immediately and when they change.
+  const backgroundMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const backgroundVideo = document.querySelector('.global-bg__video');
+  function syncBackgroundMotion() {
+    if (!backgroundVideo) return;
+    if (backgroundMotion.matches) backgroundVideo.pause();
+    else backgroundVideo.play().catch(() => {});
   }
+  backgroundMotion.addEventListener('change', syncBackgroundMotion);
+  syncBackgroundMotion();
 </script>

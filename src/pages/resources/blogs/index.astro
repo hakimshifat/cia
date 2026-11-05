@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 
 const posts = Object.entries(import.meta.glob('../../../blogs/*.md', { eager: true }))
   .map(([path, post]) => ({
@@ -11,6 +12,7 @@ const posts = Object.entries(import.meta.glob('../../../blogs/*.md', { eager: tr
 ---
 <Layout title="Blogs - CIA">
 <section id="resources-blogs" class="section-pad">
+  <Breadcrumbs />
   <div class="section-header reveal">
     <div class="section-eyebrow">Blogs</div>
     <h2 class="section-title">Field <span>Journal</span></h2>

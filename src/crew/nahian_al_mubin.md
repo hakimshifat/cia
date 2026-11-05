@@ -2,7 +2,7 @@
 name: "Nahian Al Mubin"
 handle: "@nahianalmubin2006"
 type: "member"
-order: 14
+order: 18
 image: "/assets/images/members/Nahian_Al_Mubin.webp"
 expertise:
   - "OSINT"
