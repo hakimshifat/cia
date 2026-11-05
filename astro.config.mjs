@@ -4,6 +4,7 @@ import AstroPWA from '@vite-pwa/astro';
 export default defineConfig({
   site: 'https://cyberinvasionarmy.com',
   base: '/',
+  trailingSlash: 'always',
   integrations: [
     AstroPWA({
       registerType: 'autoUpdate',
@@ -51,7 +52,8 @@ export default defineConfig({
         ]
       },
       workbox: {
-        navigateFallback: '/index.html',
+        // Each route is a separate document; never substitute the homepage.
+        navigateFallback: null,
         globPatterns: ['**/*.{css,js,html,svg,ico,txt,png,jpg,jpeg,webp}']
       }
     })

@@ -2814,3 +2814,13 @@
   #navbar::after, .pill-nav::before, .hero-scanline, .blink-cursor, .live-dot { animation: none; }
   .stats-card-wrap { animation: none; }
   .stat-num { font-variant-numeric: tabular-nums; }
+
+  /* Search landing pages share the same theme, spacing, and reading measure. */
+  .landing-content { max-width: 64rem; margin-inline: auto; }
+  .landing-content .section-title { margin-bottom: var(--space-8); }
+  .landing-content .card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: var(--space-6); margin-block: var(--space-6); }
+  .landing-content p { margin-bottom: var(--space-4); line-height: 1.75; }
+  .landing-content h2 { margin-block: var(--space-8) var(--space-4); }
+  .landing-content ul { padding-inline-start: var(--space-6); }
+  .landing-content a { color: var(--indigo-light); text-underline-offset: .2em; }
+  .landing-content .muted { color: var(--text-muted); }
